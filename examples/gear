@@ -252,7 +252,7 @@ import Qt::app;
 
 if(!Qt::GLFormat::hasOpenGL()) {
     warn("This system has no OpenGL support. Exiting.");
-    return -1;
+    exit -1;
 }
 
 $w = new GearWidget;

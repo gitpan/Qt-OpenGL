@@ -12,7 +12,7 @@ require DynaLoader;
 require Qt;
 
 @ISA = qw(DynaLoader);
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 bootstrap Qt::OpenGL $VERSION;
 

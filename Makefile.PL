@@ -98,7 +98,7 @@ WriteMakefile(
     %Args,
     NAME => 'Qt::OpenGL',
     VERSION_FROM => 'OpenGL.pm',
-    PREREQ_PM => { 'Qt' => '2.103' },
+    PREREQ_PM => { 'Qt' => '2.104' },
     PM => { 'OpenGL.pm', '$(INST_LIBDIR)/OpenGL.pm' },
     CONFIGURE => \&configurate,
     realclean => { FILES => 'pig_*' }
