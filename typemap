@@ -1,0 +1,148 @@
+# this typemap is only used by xsubpp
+# to marshal THIS in xs code
+QGLShaderProgram *                      		T_PTROBJ_0000
+QGLColormap *                           		T_PTROBJ_0001
+QGLFramebufferObjectFormat *            		T_PTROBJ_0002
+QSysInfo *                              		T_PTROBJ_0003
+QFlag *                                 		T_PTROBJ_0004
+QGLFramebufferObject *                  		T_PTROBJ_0005
+QIncompatibleFlag *                     		T_PTROBJ_0006
+QInternal *                             		T_PTROBJ_0007
+QGLWidget *                             		T_PTROBJ_0008
+QGLPixelBuffer *                        		T_PTROBJ_0009
+QGLFormat *                             		T_PTROBJ_0010
+QGLShader *                             		T_PTROBJ_0011
+QGLContext *                            		T_PTROBJ_0012
+QBool *                                 		T_PTROBJ_0013
+
+################################################################
+INPUT
+T_PTROBJ_0000
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLShaderProgram\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLShaderProgram\");
+
+T_PTROBJ_0001
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLColormap\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLColormap\");
+
+T_PTROBJ_0002
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLFramebufferObjectFormat\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLFramebufferObjectFormat\");
+
+T_PTROBJ_0003
+    if (sv_derived_from($arg, \"Qt::Core::QSysInfo\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::Core::QSysInfo\");
+
+T_PTROBJ_0004
+    if (sv_derived_from($arg, \"Qt::Core::QFlag\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::Core::QFlag\");
+
+T_PTROBJ_0005
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLFramebufferObject\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLFramebufferObject\");
+
+T_PTROBJ_0006
+    if (sv_derived_from($arg, \"Qt::Core::QIncompatibleFlag\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::Core::QIncompatibleFlag\");
+
+T_PTROBJ_0007
+    if (sv_derived_from($arg, \"Qt::Core::QInternal\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::Core::QInternal\");
+
+T_PTROBJ_0008
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLWidget\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLWidget\");
+
+T_PTROBJ_0009
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLPixelBuffer\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLPixelBuffer\");
+
+T_PTROBJ_0010
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLFormat\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLFormat\");
+
+T_PTROBJ_0011
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLShader\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLShader\");
+
+T_PTROBJ_0012
+    if (sv_derived_from($arg, \"Qt::OpenGL::QGLContext\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::QGLContext\");
+
+T_PTROBJ_0013
+    if (sv_derived_from($arg, \"Qt::Core::QBool\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::Core::QBool\");
+
+
+################################################################
+OUTPUT
+T_PTROBJ_0000
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLShaderProgram\", (void *)$var);
+
+T_PTROBJ_0001
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLColormap\", (void *)$var);
+
+T_PTROBJ_0002
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLFramebufferObjectFormat\", (void *)$var);
+
+T_PTROBJ_0003
+    sv_setref_pv($arg, \"Qt::Core::QSysInfo\", (void *)$var);
+
+T_PTROBJ_0004
+    sv_setref_pv($arg, \"Qt::Core::QFlag\", (void *)$var);
+
+T_PTROBJ_0005
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLFramebufferObject\", (void *)$var);
+
+T_PTROBJ_0006
+    sv_setref_pv($arg, \"Qt::Core::QIncompatibleFlag\", (void *)$var);
+
+T_PTROBJ_0007
+    sv_setref_pv($arg, \"Qt::Core::QInternal\", (void *)$var);
+
+T_PTROBJ_0008
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLWidget\", (void *)$var);
+
+T_PTROBJ_0009
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLPixelBuffer\", (void *)$var);
+
+T_PTROBJ_0010
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLFormat\", (void *)$var);
+
+T_PTROBJ_0011
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLShader\", (void *)$var);
+
+T_PTROBJ_0012
+    sv_setref_pv($arg, \"Qt::OpenGL::QGLContext\", (void *)$var);
+
+T_PTROBJ_0013
+    sv_setref_pv($arg, \"Qt::Core::QBool\", (void *)$var);
+
