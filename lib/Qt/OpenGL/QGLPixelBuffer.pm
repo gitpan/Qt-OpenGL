@@ -7,11 +7,11 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
+our $ISA     = qw/Qt::Gui::QPaintDevice/;
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,69 +24,72 @@ Qt::OpenGL::QGLPixelBuffer
 
 =over
 
-=item    QGLPixelBuffer(const QSize & size, const QGLFormat & format, QGLWidget * shareWidget = 0)
+=item   QGLPixelBuffer(, , )
 
-=item    QGLPixelBuffer(const QSize & size, const QGLFormat & format, QGLWidget * shareWidget)
+=item   QGLPixelBuffer(, ,  = 0)
 
-=item    QGLPixelBuffer(const QSize & size, const QGLFormat & format = QGLFormat::defaultFormat(), QGLWidget * shareWidget = 0)
+=item   QGLPixelBuffer(,  = QGLFormat::defaultFormat(),  = 0)
 
-=item    QGLPixelBuffer(const QSize & size, const QGLFormat & format, QGLWidget * shareWidget = 0)
+=item   QGLPixelBuffer(, , , )
 
-=item    QGLPixelBuffer(int width, int height, const QGLFormat & format, QGLWidget * shareWidget = 0)
+=item   QGLPixelBuffer(, , ,  = 0)
 
-=item    QGLPixelBuffer(int width, int height, const QGLFormat & format, QGLWidget * shareWidget)
+=item   QGLPixelBuffer(, ,  = QGLFormat::defaultFormat(),  = 0)
 
-=item    QGLPixelBuffer(int width, int height, const QGLFormat & format = QGLFormat::defaultFormat(), QGLWidget * shareWidget = 0)
+=item   ~QGLPixelBuffer()
 
-=item    QGLPixelBuffer(int width, int height, const QGLFormat & format, QGLWidget * shareWidget = 0)
+=item  GLuint bindTexture()
 
-=item    ~QGLPixelBuffer()
+=item  GLuint bindTexture(, )
 
-=item   GLuint bindTexture(const QString & fileName)
+=item  GLuint bindTexture(,  = GL_TEXTURE_2D)
 
-=item   GLuint bindTexture(const QImage & image, GLenum target = GL_TEXTURE_2D)
+=item  GLuint bindTexture(, )
 
-=item   GLuint bindTexture(const QImage & image, GLenum target)
+=item  GLuint bindTexture(,  = GL_TEXTURE_2D)
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target = GL_TEXTURE_2D)
+=item  bool bindToDynamicTexture()
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target)
+=item  void deleteTexture()
 
-=item   bool bindToDynamicTexture(GLuint texture)
+=item  bool doneCurrent()
 
-=item   void deleteTexture(GLuint texture_id)
+=item  void drawTexture(, , )
 
-=item   bool doneCurrent()
+=item  void drawTexture(, ,  = GL_TEXTURE_2D)
 
-=item   void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+=item  void drawTexture(, , )
 
-=item   void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
+=item  void drawTexture(, ,  = GL_TEXTURE_2D)
 
-=item   void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+=item  QGLFormat format()
 
-=item   void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
+=item  GLuint generateDynamicTexture()
 
-=item   QGLFormat format()
+=item  unsigned long handle()
 
-=item   GLuint generateDynamicTexture()
+=item  static bool hasOpenGLPbuffers()
 
-=item   unsigned long handle()
+=item  bool isValid()
 
-=item   static bool hasOpenGLPbuffers()
+=item  bool makeCurrent()
 
-=item   bool isValid()
+=item  QPaintEngine * paintEngine()
 
-=item   bool makeCurrent()
+=item  void releaseFromDynamicTexture()
 
-=item   QPaintEngine * paintEngine()
+=item  QSize size()
 
-=item   void releaseFromDynamicTexture()
+=item  QImage toImage()
 
-=item   QSize size()
+=item  void updateDynamicTexture()
 
-=item   QImage toImage()
 
-=item   void updateDynamicTexture(GLuint texture_id)
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

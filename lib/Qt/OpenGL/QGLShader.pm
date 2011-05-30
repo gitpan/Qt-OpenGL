@@ -7,15 +7,11 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
+our $ISA     = qw/Qt::Core::QObject/;
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub Vertex() { 0 }
-sub Fragment() { 1 }
 
 
 1;
@@ -28,23 +24,50 @@ Qt::OpenGL::QGLShader
 
 =over
 
-=item    ~QGLShader()
+=item   QGLShader(, )
 
-=item   bool compileSourceCode(const char * source)
+=item   QGLShader(,  = 0)
 
-=item   bool compileSourceCode(const QByteArray & source)
+=item   QGLShader(, , )
 
-=item   bool compileSourceCode(const QString & source)
+=item   QGLShader(, ,  = 0)
 
-=item   bool compileSourceFile(const QString & fileName)
+=item   ~QGLShader()
 
-=item   bool isCompiled()
+=item  bool compileSourceCode()
 
-=item   QString log()
+=item  bool compileSourceCode()
 
-=item   GLuint shaderId()
+=item  bool compileSourceCode()
 
-=item   QByteArray sourceCode()
+=item  bool compileSourceFile()
+
+=item  static bool hasOpenGLShaders(, )
+
+=item  static bool hasOpenGLShaders(,  = 0)
+
+=item  bool isCompiled()
+
+=item  QString log()
+
+=item  GLuint shaderId()
+
+=item  QFlags<QGLShader::ShaderTypeBit> shaderType()
+
+=item  QByteArray sourceCode()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item Vertex
+
+=item Fragment
+
+=item Geometry
 
 
 =back

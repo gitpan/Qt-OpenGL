@@ -3,6 +3,7 @@
 
 #include "QtCore/qglobal.h"
 #include "QtOpenGL/qgl.h"
+#include "QtOpenGL/qglbuffer.h"
 #include "QtOpenGL/qglcolormap.h"
 #include "QtOpenGL/qglframebufferobject.h"
 #include "QtOpenGL/qglpixelbuffer.h"
@@ -23,6 +24,7 @@ typedef void (*T_FPOINTER_QTMSGHANDLER_QGLOBAL)(QtMsgType,const char *);
 MODULE = Qt		PACKAGE = Qt
 PROTOTYPES: DISABLE
 
+INCLUDE:		xs/QGLBuffer.xs
 INCLUDE:		xs/QGLColormap.xs
 INCLUDE:		xs/QGLContext.xs
 INCLUDE:		xs/QGLFormat.xs

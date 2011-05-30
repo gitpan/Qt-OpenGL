@@ -7,11 +7,11 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
+our $ISA     = qw/Qt::Core::QObject/;
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,227 +24,280 @@ Qt::OpenGL::QGLShaderProgram
 
 =over
 
-=item    QGLShaderProgram(QObject * parent = 0)
+=item   QGLShaderProgram()
 
-=item    QGLShaderProgram(QObject * parent)
+=item   QGLShaderProgram( = 0)
 
-=item    QGLShaderProgram(const QGLContext * context, QObject * parent = 0)
+=item   QGLShaderProgram(, )
 
-=item    QGLShaderProgram(const QGLContext * context, QObject * parent)
+=item   QGLShaderProgram(,  = 0)
 
-=item    ~QGLShaderProgram()
+=item   ~QGLShaderProgram()
 
-=item   bool addShader(QGLShader * shader)
+=item  bool addShader()
 
-=item   int attributeLocation(const char * name)
+=item  bool addShaderFromSourceCode(, )
 
-=item   int attributeLocation(const QByteArray & name)
+=item  bool addShaderFromSourceCode(, )
 
-=item   int attributeLocation(const QString & name)
+=item  bool addShaderFromSourceCode(, )
 
-=item   bool bind()
+=item  bool addShaderFromSourceFile(, )
 
-=item   void bindAttributeLocation(const char * name, int location)
+=item  int attributeLocation()
 
-=item   void bindAttributeLocation(const QByteArray & name, int location)
+=item  int attributeLocation()
 
-=item   void bindAttributeLocation(const QString & name, int location)
+=item  int attributeLocation()
 
-=item   void disableAttributeArray(int location)
+=item  bool bind()
 
-=item   void disableAttributeArray(const char * name)
+=item  void bindAttributeLocation(, )
 
-=item   void enableAttributeArray(int location)
+=item  void bindAttributeLocation(, )
 
-=item   void enableAttributeArray(const char * name)
+=item  void bindAttributeLocation(, )
 
-=item   static bool hasOpenGLShaderPrograms(const QGLContext * context = 0)
+=item  void disableAttributeArray()
 
-=item   static bool hasOpenGLShaderPrograms(const QGLContext * context)
+=item  void disableAttributeArray()
 
-=item   bool isLinked()
+=item  void enableAttributeArray()
 
-=item   bool link()
+=item  void enableAttributeArray()
 
-=item   QString log()
+=item  GLenum geometryInputType()
 
-=item   GLuint programId()
+=item  GLenum geometryOutputType()
 
-=item   void release()
+=item  int geometryOutputVertexCount()
 
-=item   void removeAllShaders()
+=item  static bool hasOpenGLShaderPrograms()
 
-=item   void removeShader(QGLShader * shader)
+=item  static bool hasOpenGLShaderPrograms( = 0)
 
-=item   void setAttributeArray(int location, const QVector2D * values, int stride = 0)
+=item  bool isLinked()
 
-=item   void setAttributeArray(int location, const QVector2D * values, int stride)
+=item  bool link()
 
-=item   void setAttributeArray(int location, const QVector3D * values, int stride = 0)
+=item  QString log()
 
-=item   void setAttributeArray(int location, const QVector3D * values, int stride)
+=item  int maxGeometryOutputVertices()
 
-=item   void setAttributeArray(int location, const QVector4D * values, int stride = 0)
+=item  GLuint programId()
 
-=item   void setAttributeArray(int location, const QVector4D * values, int stride)
+=item  void release()
 
-=item   void setAttributeArray(const char * name, const QVector2D * values, int stride = 0)
+=item  void removeAllShaders()
 
-=item   void setAttributeArray(const char * name, const QVector2D * values, int stride)
+=item  void removeShader()
 
-=item   void setAttributeArray(const char * name, const QVector3D * values, int stride = 0)
+=item  void setAttributeArray(, , )
 
-=item   void setAttributeArray(const char * name, const QVector3D * values, int stride)
+=item  void setAttributeArray(, ,  = 0)
 
-=item   void setAttributeArray(const char * name, const QVector4D * values, int stride = 0)
+=item  void setAttributeArray(, , )
 
-=item   void setAttributeArray(const char * name, const QVector4D * values, int stride)
+=item  void setAttributeArray(, ,  = 0)
 
-=item   void setAttributeArray(int location, const GLfloat * values, int tupleSize, int stride = 0)
+=item  void setAttributeArray(, , )
 
-=item   void setAttributeArray(int location, const GLfloat * values, int tupleSize, int stride)
+=item  void setAttributeArray(, ,  = 0)
 
-=item   void setAttributeArray(const char * name, const GLfloat * values, int tupleSize, int stride = 0)
+=item  void setAttributeArray(, , )
 
-=item   void setAttributeArray(const char * name, const GLfloat * values, int tupleSize, int stride)
+=item  void setAttributeArray(, ,  = 0)
 
-=item   void setAttributeValue(int location, GLfloat value)
+=item  void setAttributeArray(, , )
 
-=item   void setAttributeValue(int location, const QVector2D & value)
+=item  void setAttributeArray(, ,  = 0)
 
-=item   void setAttributeValue(int location, const QVector3D & value)
+=item  void setAttributeArray(, , )
 
-=item   void setAttributeValue(int location, const QVector4D & value)
+=item  void setAttributeArray(, ,  = 0)
 
-=item   void setAttributeValue(int location, const QColor & value)
+=item  void setAttributeArray(, , , )
 
-=item   void setAttributeValue(const char * name, GLfloat value)
+=item  void setAttributeArray(, , ,  = 0)
 
-=item   void setAttributeValue(const char * name, const QVector2D & value)
+=item  void setAttributeArray(, , , )
 
-=item   void setAttributeValue(const char * name, const QVector3D & value)
+=item  void setAttributeArray(, , ,  = 0)
 
-=item   void setAttributeValue(const char * name, const QVector4D & value)
+=item  void setAttributeArray(, , , , )
 
-=item   void setAttributeValue(const char * name, const QColor & value)
+=item  void setAttributeArray(, , , ,  = 0)
 
-=item   void setAttributeValue(int location, GLfloat x, GLfloat y)
+=item  void setAttributeArray(, , , , )
 
-=item   void setAttributeValue(const char * name, GLfloat x, GLfloat y)
+=item  void setAttributeArray(, , , ,  = 0)
 
-=item   void setAttributeValue(int location, GLfloat x, GLfloat y, GLfloat z)
+=item  void setAttributeBuffer(, , , , )
 
-=item   void setAttributeValue(int location, const GLfloat * values, int columns, int rows)
+=item  void setAttributeBuffer(, , , ,  = 0)
 
-=item   void setAttributeValue(const char * name, GLfloat x, GLfloat y, GLfloat z)
+=item  void setAttributeBuffer(, , , , )
 
-=item   void setAttributeValue(const char * name, const GLfloat * values, int columns, int rows)
+=item  void setAttributeBuffer(, , , ,  = 0)
 
-=item   void setAttributeValue(int location, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+=item  void setAttributeValue(, )
 
-=item   void setAttributeValue(const char * name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, GLfloat value)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, GLint value)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, GLuint value)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, const QVector2D & value)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, const QVector3D & value)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, const QVector4D & value)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, const QColor & color)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, const QPoint & point)
+=item  void setAttributeValue(, )
 
-=item   void setUniformValue(int location, const QPointF & point)
+=item  void setAttributeValue(, , )
 
-=item   void setUniformValue(int location, const QSize & size)
+=item  void setAttributeValue(, , )
 
-=item   void setUniformValue(int location, const QSizeF & size)
+=item  void setAttributeValue(, , , )
 
-=item   void setUniformValue(int location, const QMatrix4x4 & value)
+=item  void setAttributeValue(, , , )
 
-=item   void setUniformValue(int location, T_ARRAY_VALUE const GLfloat  T_ARRAY_VALUE[4][4])
+=item  void setAttributeValue(, , , )
 
-=item   void setUniformValue(int location, const QTransform & value)
+=item  void setAttributeValue(, , , )
 
-=item   void setUniformValue(const char * name, GLfloat value)
+=item  void setAttributeValue(, , , , )
 
-=item   void setUniformValue(const char * name, GLint value)
+=item  void setAttributeValue(, , , , )
 
-=item   void setUniformValue(const char * name, GLuint value)
+=item  void setGeometryInputType()
 
-=item   void setUniformValue(const char * name, const QVector2D & value)
+=item  void setGeometryOutputType()
 
-=item   void setUniformValue(const char * name, const QVector3D & value)
+=item  void setGeometryOutputVertexCount()
 
-=item   void setUniformValue(const char * name, const QVector4D & value)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, const QColor & color)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, const QPoint & point)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, const QPointF & point)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, const QSize & size)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, const QSizeF & size)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, const QMatrix4x4 & value)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, T_ARRAY_VALUE const GLfloat  T_ARRAY_VALUE[4][4])
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, const QTransform & value)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(int location, GLfloat x, GLfloat y)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, GLfloat x, GLfloat y)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(int location, GLfloat x, GLfloat y, GLfloat z)
+=item  void setUniformValue(, )
 
-=item   void setUniformValue(const char * name, GLfloat x, GLfloat y, GLfloat z)
+=item  void setUniformValue(, const GLfloat  T_ARRAY_VALUE[2][2])
 
-=item   void setUniformValue(int location, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+=item  void setUniformValue(, const GLfloat  T_ARRAY_VALUE[3][3])
 
-=item   void setUniformValue(const char * name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+=item  void setUniformValue(, const GLfloat  T_ARRAY_VALUE[4][4])
 
-=item   void setUniformValueArray(int location, const GLint * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(int location, const GLuint * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(int location, const QVector2D * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(int location, const QVector3D * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(int location, const QVector4D * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(int location, const QMatrix4x4 * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(const char * name, const GLint * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(const char * name, const GLuint * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(const char * name, const QVector2D * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(const char * name, const QVector3D * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(const char * name, const QVector4D * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(const char * name, const QMatrix4x4 * values, int count)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(int location, const GLfloat * values, int count, int tupleSize)
+=item  void setUniformValue(, )
 
-=item   void setUniformValueArray(const char * name, const GLfloat * values, int count, int tupleSize)
+=item  void setUniformValue(, const GLfloat  T_ARRAY_VALUE[2][2])
 
-=item   int uniformLocation(const char * name)
+=item  void setUniformValue(, const GLfloat  T_ARRAY_VALUE[3][3])
 
-=item   int uniformLocation(const QByteArray & name)
+=item  void setUniformValue(, const GLfloat  T_ARRAY_VALUE[4][4])
 
-=item   int uniformLocation(const QString & name)
+=item  void setUniformValue(, )
+
+=item  void setUniformValue(, , )
+
+=item  void setUniformValue(, , )
+
+=item  void setUniformValue(, , , )
+
+=item  void setUniformValue(, , , )
+
+=item  void setUniformValue(, , , , )
+
+=item  void setUniformValue(, , , , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , )
+
+=item  void setUniformValueArray(, , , )
+
+=item  void setUniformValueArray(, , , )
+
+=item  int uniformLocation()
+
+=item  int uniformLocation()
+
+=item  int uniformLocation()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

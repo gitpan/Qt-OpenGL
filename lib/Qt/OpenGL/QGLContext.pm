@@ -7,22 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub NoBindOption() { 0 }
-sub InvertedYBindOption() { 1 }
-sub MipmapBindOption() { 2 }
-sub PremultipliedAlphaBindOption() { 3 }
-sub LinearFilteringBindOption() { 4 }
-sub MemoryManagedBindOption() { 5 }
-sub CanFlipNativePixmapBindOption() { 6 }
-sub DefaultBindOption() { 7 }
-sub InternalBindOption() { 8 }
 
 
 1;
@@ -35,75 +23,100 @@ Qt::OpenGL::QGLContext
 
 =over
 
-=item    QGLContext(const QGLFormat & format)
+=item   QGLContext()
 
-=item    QGLContext(const QGLFormat & format, QPaintDevice * device)
+=item   QGLContext(, )
 
-=item    ~QGLContext()
+=item   ~QGLContext()
 
-=item   static bool areSharing(const QGLContext * context1, const QGLContext * context2)
+=item  static bool areSharing(, )
 
-=item   GLuint bindTexture(const QString & fileName)
+=item  GLuint bindTexture()
 
-=item   GLuint bindTexture(const QImage & image, GLenum target, GLint format = GL_RGBA)
+=item  GLuint bindTexture(, , )
 
-=item   GLuint bindTexture(const QImage & image, GLenum target, GLint format)
+=item  GLuint bindTexture(, ,  = GL_RGBA)
 
-=item   GLuint bindTexture(const QImage & image, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
+=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
 
-=item   GLuint bindTexture(const QImage & image, GLenum target, GLint format = GL_RGBA)
+=item  GLuint bindTexture(, , )
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format = GL_RGBA)
+=item  GLuint bindTexture(, ,  = GL_RGBA)
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format)
+=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
+=item  GLuint bindTexture(, , , )
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format = GL_RGBA)
+=item  GLuint bindTexture(, , , )
 
-=item   bool create(const QGLContext * shareContext = 0)
+=item  bool create()
 
-=item   bool create(const QGLContext * shareContext)
+=item  bool create( = 0)
 
-=item   static const QGLContext * currentContext()
+=item  static const QGLContext * currentContext()
 
-=item   void deleteTexture(GLuint tx_id)
+=item  void deleteTexture()
 
-=item   QPaintDevice * device()
+=item  QPaintDevice * device()
 
-=item   void doneCurrent()
+=item  void doneCurrent()
 
-=item   void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+=item  void drawTexture(, , )
 
-=item   void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
+=item  void drawTexture(, ,  = GL_TEXTURE_2D)
 
-=item   void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+=item  void drawTexture(, , )
 
-=item   void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
+=item  void drawTexture(, ,  = GL_TEXTURE_2D)
 
-=item   QGLFormat format()
+=item  QGLFormat format()
 
-=item   void * getProcAddress(const QString & proc)
+=item  void * getProcAddress()
 
-=item   bool isSharing()
+=item  bool isSharing()
 
-=item   bool isValid()
+=item  bool isValid()
 
-=item   void makeCurrent()
+=item  void makeCurrent()
 
-=item   QColor overlayTransparentColor()
+=item  QColor overlayTransparentColor()
 
-=item   QGLFormat requestedFormat()
+=item  QGLFormat requestedFormat()
 
-=item   void reset()
+=item  void reset()
 
-=item   void setFormat(const QGLFormat & format)
+=item  void setFormat()
 
-=item   static void setTextureCacheLimit(int size)
+=item  static void setTextureCacheLimit()
 
-=item   void swapBuffers()
+=item  void swapBuffers()
 
-=item   static int textureCacheLimit()
+=item  static int textureCacheLimit()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item NoBindOption
+
+=item InvertedYBindOption
+
+=item MipmapBindOption
+
+=item PremultipliedAlphaBindOption
+
+=item LinearFilteringBindOption
+
+=item MemoryManagedBindOption
+
+=item CanFlipNativePixmapBindOption
+
+=item DefaultBindOption
+
+=item InternalBindOption
 
 
 =back

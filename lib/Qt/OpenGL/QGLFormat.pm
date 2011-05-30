@@ -7,27 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub OpenGL_Version_None() { 0 }
-sub OpenGL_Version_1_1() { 1 }
-sub OpenGL_Version_1_2() { 2 }
-sub OpenGL_Version_1_3() { 3 }
-sub OpenGL_Version_1_4() { 4 }
-sub OpenGL_Version_1_5() { 5 }
-sub OpenGL_Version_2_0() { 6 }
-sub OpenGL_Version_2_1() { 7 }
-sub OpenGL_ES_Common_Version_1_0() { 8 }
-sub OpenGL_ES_CommonLite_Version_1_0() { 9 }
-sub OpenGL_ES_Common_Version_1_1() { 10 }
-sub OpenGL_ES_CommonLite_Version_1_1() { 11 }
-sub OpenGL_ES_Version_2_0() { 12 }
-sub OpenGL_Version_3_0() { 13 }
 
 
 1;
@@ -40,105 +23,174 @@ Qt::OpenGL::QGLFormat
 
 =over
 
-=item    QGLFormat()
+=item   QGLFormat()
 
-=item    QGLFormat(const QGLFormat & other)
+=item   QGLFormat()
 
-=item    ~QGLFormat()
+=item   QGLFormat(, )
 
-=item   bool accum()
+=item   QGLFormat(,  = 0)
 
-=item   int accumBufferSize()
+=item   ~QGLFormat()
 
-=item   bool alpha()
+=item  bool accum()
 
-=item   int alphaBufferSize()
+=item  int accumBufferSize()
 
-=item   int blueBufferSize()
+=item  bool alpha()
 
-=item   static QGLFormat defaultFormat()
+=item  int alphaBufferSize()
 
-=item   static QGLFormat defaultOverlayFormat()
+=item  int blueBufferSize()
 
-=item   bool depth()
+=item  static QGLFormat defaultFormat()
 
-=item   int depthBufferSize()
+=item  static QGLFormat defaultOverlayFormat()
 
-=item   bool directRendering()
+=item  bool depth()
 
-=item   bool doubleBuffer()
+=item  int depthBufferSize()
 
-=item   int greenBufferSize()
+=item  bool directRendering()
 
-=item   static bool hasOpenGL()
+=item  bool doubleBuffer()
 
-=item   static bool hasOpenGLOverlays()
+=item  int greenBufferSize()
 
-=item   bool hasOverlay()
+=item  static bool hasOpenGL()
 
-=item   QGLFormat & operator=(const QGLFormat & other)
+=item  static bool hasOpenGLOverlays()
 
-=item   int plane()
+=item  bool hasOverlay()
 
-=item   int redBufferSize()
+=item  int majorVersion()
 
-=item   bool rgba()
+=item  int minorVersion()
 
-=item   bool sampleBuffers()
+=item  static QFlags<QGLFormat::OpenGLVersionFlag> openGLVersionFlags()
 
-=item   int samples()
+=item  QGLFormat & operator=()
 
-=item   void setAccum(bool enable)
+=item  int plane()
 
-=item   void setAccumBufferSize(int size)
+=item  QGLFormat::OpenGLContextProfile profile()
 
-=item   void setAlpha(bool enable)
+=item  int redBufferSize()
 
-=item   void setAlphaBufferSize(int size)
+=item  bool rgba()
 
-=item   void setBlueBufferSize(int size)
+=item  bool sampleBuffers()
 
-=item   static void setDefaultFormat(const QGLFormat & f)
+=item  int samples()
 
-=item   static void setDefaultOverlayFormat(const QGLFormat & f)
+=item  void setAccum()
 
-=item   void setDepth(bool enable)
+=item  void setAccumBufferSize()
 
-=item   void setDepthBufferSize(int size)
+=item  void setAlpha()
 
-=item   void setDirectRendering(bool enable)
+=item  void setAlphaBufferSize()
 
-=item   void setDoubleBuffer(bool enable)
+=item  void setBlueBufferSize()
 
-=item   void setGreenBufferSize(int size)
+=item  static void setDefaultFormat()
 
-=item   void setOverlay(bool enable)
+=item  static void setDefaultOverlayFormat()
 
-=item   void setPlane(int plane)
+=item  void setDepth()
 
-=item   void setRedBufferSize(int size)
+=item  void setDepthBufferSize()
 
-=item   void setRgba(bool enable)
+=item  void setDirectRendering()
 
-=item   void setSampleBuffers(bool enable)
+=item  void setDoubleBuffer()
 
-=item   void setSamples(int numSamples)
+=item  void setGreenBufferSize()
 
-=item   void setStencil(bool enable)
+=item  void setOption()
 
-=item   void setStencilBufferSize(int size)
+=item  void setOverlay()
 
-=item   void setStereo(bool enable)
+=item  void setPlane()
 
-=item   void setSwapInterval(int interval)
+=item  void setProfile()
 
-=item   bool stencil()
+=item  void setRedBufferSize()
 
-=item   int stencilBufferSize()
+=item  void setRgba()
 
-=item   bool stereo()
+=item  void setSampleBuffers()
 
-=item   int swapInterval()
+=item  void setSamples()
+
+=item  void setStencil()
+
+=item  void setStencilBufferSize()
+
+=item  void setStereo()
+
+=item  void setSwapInterval()
+
+=item  void setVersion(, )
+
+=item  bool stencil()
+
+=item  int stencilBufferSize()
+
+=item  bool stereo()
+
+=item  int swapInterval()
+
+=item  bool testOption()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item NoProfile
+
+=item CoreProfile
+
+=item CompatibilityProfile
+
+=item OpenGL_Version_None
+
+=item OpenGL_Version_1_1
+
+=item OpenGL_Version_1_2
+
+=item OpenGL_Version_1_3
+
+=item OpenGL_Version_1_4
+
+=item OpenGL_Version_1_5
+
+=item OpenGL_Version_2_0
+
+=item OpenGL_Version_2_1
+
+=item OpenGL_ES_Common_Version_1_0
+
+=item OpenGL_ES_CommonLite_Version_1_0
+
+=item OpenGL_ES_Common_Version_1_1
+
+=item OpenGL_ES_CommonLite_Version_1_1
+
+=item OpenGL_ES_Version_2_0
+
+=item OpenGL_Version_3_0
+
+=item OpenGL_Version_3_1
+
+=item OpenGL_Version_3_2
+
+=item OpenGL_Version_3_3
+
+=item OpenGL_Version_4_0
 
 
 =back

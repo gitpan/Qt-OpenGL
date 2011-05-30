@@ -7,11 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,33 +23,40 @@ Qt::OpenGL::QGLFramebufferObjectFormat
 
 =over
 
-=item    QGLFramebufferObjectFormat()
+=item   QGLFramebufferObjectFormat()
 
-=item    QGLFramebufferObjectFormat(const QGLFramebufferObjectFormat & other)
+=item   QGLFramebufferObjectFormat()
 
-=item    ~QGLFramebufferObjectFormat()
+=item   ~QGLFramebufferObjectFormat()
 
-=item   QGLFramebufferObject::Attachment attachment()
+=item  QGLFramebufferObject::Attachment attachment()
 
-=item   GLenum internalTextureFormat()
+=item  GLenum internalTextureFormat()
 
-=item   bool operator!=(const QGLFramebufferObjectFormat & other)
+=item  bool operator!=()
 
-=item   QGLFramebufferObjectFormat & operator=(const QGLFramebufferObjectFormat & other)
+=item  QGLFramebufferObjectFormat & operator=()
 
-=item   bool operator==(const QGLFramebufferObjectFormat & other)
+=item  bool operator==()
 
-=item   int samples()
+=item  int samples()
 
-=item   void setAttachment(QGLFramebufferObject::Attachment attachment)
+=item  void setAttachment()
 
-=item   void setInternalTextureFormat(GLenum internalTextureFormat)
+=item  void setInternalTextureFormat()
 
-=item   void setSamples(int samples)
+=item  void setSamples()
 
-=item   void setTextureTarget(GLenum target)
+=item  void setTextureTarget()
 
-=item   GLenum textureTarget()
+=item  GLenum textureTarget()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

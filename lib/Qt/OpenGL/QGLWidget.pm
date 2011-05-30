@@ -7,11 +7,11 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
+our $ISA     = qw/Qt::Gui::QWidget/;
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,115 +24,136 @@ Qt::OpenGL::QGLWidget
 
 =over
 
-=item    ~QGLWidget()
+=item   QGLWidget(, , )
 
-=item   GLuint bindTexture(const QString & fileName)
+=item   QGLWidget(, ,  = 0)
 
-=item   GLuint bindTexture(const QImage & image, GLenum target, GLint format = GL_RGBA)
+=item   QGLWidget(,  = 0,  = 0)
 
-=item   GLuint bindTexture(const QImage & image, GLenum target, GLint format)
+=item   QGLWidget( = 0,  = 0,  = 0)
 
-=item   GLuint bindTexture(const QImage & image, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
+=item   QGLWidget(, , , )
 
-=item   GLuint bindTexture(const QImage & image, GLenum target, GLint format = GL_RGBA)
+=item   QGLWidget(, , ,  = 0)
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format = GL_RGBA)
+=item   QGLWidget(, ,  = 0,  = 0)
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format)
+=item   QGLWidget(,  = 0,  = 0,  = 0)
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
+=item   QGLWidget(, , , )
 
-=item   GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format = GL_RGBA)
+=item   QGLWidget(, , ,  = 0)
 
-=item   const QGLColormap & colormap()
+=item   QGLWidget(, ,  = 0,  = 0)
 
-=item   const QGLContext * context()
+=item   QGLWidget(,  = 0,  = 0,  = 0)
 
-=item   static QImage convertToGLFormat(const QImage & img)
+=item   ~QGLWidget()
 
-=item   void deleteTexture(GLuint tx_id)
+=item  GLuint bindTexture()
 
-=item   void doneCurrent()
+=item  GLuint bindTexture(, , )
 
-=item   bool doubleBuffer()
+=item  GLuint bindTexture(, ,  = GL_RGBA)
 
-=item   void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
 
-=item   void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
+=item  GLuint bindTexture(, , )
 
-=item   void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+=item  GLuint bindTexture(, ,  = GL_RGBA)
 
-=item   void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
+=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
 
-=item   QGLFormat format()
+=item  GLuint bindTexture(, , , )
 
-=item   QImage grabFrameBuffer(bool withAlpha = false)
+=item  GLuint bindTexture(, , , )
 
-=item   QImage grabFrameBuffer(bool withAlpha)
+=item  const QGLColormap & colormap()
 
-=item   bool isSharing()
+=item  const QGLContext * context()
 
-=item   bool isValid()
+=item  static QImage convertToGLFormat()
 
-=item   void makeCurrent()
+=item  void deleteTexture()
 
-=item   void makeOverlayCurrent()
+=item  void doneCurrent()
 
-=item   const QGLContext * overlayContext()
+=item  bool doubleBuffer()
 
-=item   QPaintEngine * paintEngine()
+=item  void drawTexture(, , )
 
-=item   void qglClearColor(const QColor & c)
+=item  void drawTexture(, ,  = GL_TEXTURE_2D)
 
-=item   void qglColor(const QColor & c)
+=item  void drawTexture(, , )
 
-=item   QPixmap renderPixmap(int w, int h, bool useContext = false)
+=item  void drawTexture(, ,  = GL_TEXTURE_2D)
 
-=item   QPixmap renderPixmap(int w, int h, bool useContext)
+=item  QGLFormat format()
 
-=item   QPixmap renderPixmap(int w, int h = 0, bool useContext = false)
+=item  QImage grabFrameBuffer()
 
-=item   QPixmap renderPixmap(int w, int h, bool useContext = false)
+=item  QImage grabFrameBuffer( = false)
 
-=item   QPixmap renderPixmap(int w = 0, int h = 0, bool useContext = false)
+=item  bool isSharing()
 
-=item   QPixmap renderPixmap(int w, int h = 0, bool useContext = false)
+=item  bool isValid()
 
-=item   void renderText(int x, int y, const QString & str, const QFont & fnt, int listBase = 2000)
+=item  void makeCurrent()
 
-=item   void renderText(int x, int y, const QString & str, const QFont & fnt, int listBase)
+=item  void makeOverlayCurrent()
 
-=item   void renderText(int x, int y, const QString & str, const QFont & fnt = QFont(), int listBase = 2000)
+=item  const QGLContext * overlayContext()
 
-=item   void renderText(int x, int y, const QString & str, const QFont & fnt, int listBase = 2000)
+=item  QPaintEngine * paintEngine()
 
-=item   void renderText(double x, double y, double z, const QString & str, const QFont & fnt, int listBase = 2000)
+=item  void qglClearColor()
 
-=item   void renderText(double x, double y, double z, const QString & str, const QFont & fnt, int listBase)
+=item  void qglColor()
 
-=item   void renderText(double x, double y, double z, const QString & str, const QFont & fnt = QFont(), int listBase = 2000)
+=item  QPixmap renderPixmap(, , )
 
-=item   void renderText(double x, double y, double z, const QString & str, const QFont & fnt, int listBase = 2000)
+=item  QPixmap renderPixmap(, ,  = false)
 
-=item   void setColormap(const QGLColormap & map)
+=item  QPixmap renderPixmap(,  = 0,  = false)
 
-=item   void setContext(QGLContext * context, const QGLContext * shareContext, bool deleteOldContext = true)
+=item  QPixmap renderPixmap( = 0,  = 0,  = false)
 
-=item   void setContext(QGLContext * context, const QGLContext * shareContext, bool deleteOldContext)
+=item  void renderText(, , , , )
 
-=item   void setContext(QGLContext * context, const QGLContext * shareContext = 0, bool deleteOldContext = true)
+=item  void renderText(, , , ,  = 2000)
 
-=item   void setContext(QGLContext * context, const QGLContext * shareContext, bool deleteOldContext = true)
+=item  void renderText(, , ,  = QFont(),  = 2000)
 
-=item   void setFormat(const QGLFormat & format)
+=item  void renderText(, , , , , )
 
-=item   void setMouseTracking(bool enable)
+=item  void renderText(, , , , ,  = 2000)
 
-=item   void swapBuffers()
+=item  void renderText(, , , ,  = QFont(),  = 2000)
 
-=item   void updateGL()
+=item  void setColormap()
 
-=item   void updateOverlayGL()
+=item  void setContext(, , )
+
+=item  void setContext(, ,  = true)
+
+=item  void setContext(,  = 0,  = true)
+
+=item  void setFormat()
+
+=item  void setMouseTracking()
+
+=item  void swapBuffers()
+
+=item  void updateGL()
+
+=item  void updateOverlayGL()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

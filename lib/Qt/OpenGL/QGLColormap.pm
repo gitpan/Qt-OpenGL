@@ -7,11 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,35 +23,42 @@ Qt::OpenGL::QGLColormap
 
 =over
 
-=item    QGLColormap()
+=item   QGLColormap()
 
-=item    QGLColormap(const QGLColormap & arg0)
+=item   QGLColormap()
 
-=item    ~QGLColormap()
+=item   ~QGLColormap()
 
-=item   void detach()
+=item  void detach()
 
-=item   QColor entryColor(int idx)
+=item  QColor entryColor()
 
-=item   QRgb entryRgb(int idx)
+=item  QRgb entryRgb()
 
-=item   int find(QRgb color)
+=item  int find()
 
-=item   int findNearest(QRgb color)
+=item  int findNearest()
 
-=item   bool isEmpty()
+=item  bool isEmpty()
 
-=item   QGLColormap & operator=(const QGLColormap & arg0)
+=item  QGLColormap & operator=()
 
-=item   void setEntries(int count, const QRgb * colors, int base = 0)
+=item  void setEntries(, , )
 
-=item   void setEntries(int count, const QRgb * colors, int base)
+=item  void setEntries(, ,  = 0)
 
-=item   void setEntry(int idx, QRgb color)
+=item  void setEntry(, )
 
-=item   void setEntry(int idx, const QColor & color)
+=item  void setEntry(, )
 
-=item   int size()
+=item  int size()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back
