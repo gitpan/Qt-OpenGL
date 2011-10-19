@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,31 +25,31 @@ Qt::OpenGL::QGLColormap
 
 =item   QGLColormap()
 
-=item   QGLColormap()
+=item   QGLColormap(const QGLColormap & arg0)
 
 =item   ~QGLColormap()
 
 =item  void detach()
 
-=item  QColor entryColor()
+=item  QColor entryColor(int idx)
 
-=item  QRgb entryRgb()
+=item  QRgb entryRgb(int idx)
 
-=item  int find()
+=item  int find(QRgb color)
 
-=item  int findNearest()
+=item  int findNearest(QRgb color)
 
 =item  bool isEmpty()
 
-=item  QGLColormap & operator=()
+=item  QGLColormap & operator=(const QGLColormap & arg0)
 
-=item  void setEntries(, , )
+=item  void setEntries(int count, const QRgb * colors, int base)
 
-=item  void setEntries(, ,  = 0)
+=item  void setEntries(int count, const QRgb * colors, int base = 0)
 
-=item  void setEntry(, )
+=item  void setEntry(int idx, QRgb color)
 
-=item  void setEntry(, )
+=item  void setEntry(int idx, const QColor & color)
 
 =item  int size()
 

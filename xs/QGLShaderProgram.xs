@@ -18,10 +18,10 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QGLShaderProgram()
-##  QGLShaderProgram( = 0)
-##  QGLShaderProgram(, )
-##  QGLShaderProgram(,  = 0)
+##  QGLShaderProgram(QObject * parent)
+##  QGLShaderProgram(QObject * parent = 0)
+##  QGLShaderProgram(const QGLContext * context, QObject * parent)
+##  QGLShaderProgram(const QGLContext * context, QObject * parent = 0)
   void
 QGLShaderProgram::new(...)
 PREINIT:
@@ -119,7 +119,7 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## bool addShader()
+## bool addShader(QGLShader * shader)
 void
 QGLShaderProgram::addShader(...)
 PREINIT:
@@ -140,9 +140,9 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool addShaderFromSourceCode(, )
-## bool addShaderFromSourceCode(, )
-## bool addShaderFromSourceCode(, )
+## bool addShaderFromSourceCode(QFlags<QGLShader::ShaderTypeBit> type, const char * source)
+## bool addShaderFromSourceCode(QFlags<QGLShader::ShaderTypeBit> type, const QByteArray & source)
+## bool addShaderFromSourceCode(QFlags<QGLShader::ShaderTypeBit> type, const QString & source)
 void
 QGLShaderProgram::addShaderFromSourceCode(...)
 PREINIT:
@@ -189,7 +189,7 @@ PPCODE:
         break;
     }
 
-## bool addShaderFromSourceFile(, )
+## bool addShaderFromSourceFile(QFlags<QGLShader::ShaderTypeBit> type, const QString & fileName)
 void
 QGLShaderProgram::addShaderFromSourceFile(...)
 PREINIT:
@@ -205,9 +205,9 @@ PPCODE:
     XSRETURN(1);
     }
 
-## int attributeLocation()
-## int attributeLocation()
-## int attributeLocation()
+## int attributeLocation(const char * name)
+## int attributeLocation(const QByteArray & name)
+## int attributeLocation(const QString & name)
 void
 QGLShaderProgram::attributeLocation(...)
 PREINIT:
@@ -261,9 +261,9 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void bindAttributeLocation(, )
-## void bindAttributeLocation(, )
-## void bindAttributeLocation(, )
+## void bindAttributeLocation(const char * name, int location)
+## void bindAttributeLocation(const QByteArray & name, int location)
+## void bindAttributeLocation(const QString & name, int location)
 void
 QGLShaderProgram::bindAttributeLocation(...)
 PREINIT:
@@ -304,8 +304,8 @@ PPCODE:
         break;
     }
 
-## void disableAttributeArray()
-## void disableAttributeArray()
+## void disableAttributeArray(int location)
+## void disableAttributeArray(const char * name)
 void
 QGLShaderProgram::disableAttributeArray(...)
 PREINIT:
@@ -334,8 +334,8 @@ PPCODE:
         break;
     }
 
-## void enableAttributeArray()
-## void enableAttributeArray()
+## void enableAttributeArray(int location)
+## void enableAttributeArray(const char * name)
 void
 QGLShaderProgram::enableAttributeArray(...)
 PREINIT:
@@ -403,8 +403,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## static bool hasOpenGLShaderPrograms()
-## static bool hasOpenGLShaderPrograms( = 0)
+## static bool hasOpenGLShaderPrograms(const QGLContext * context)
+## static bool hasOpenGLShaderPrograms(const QGLContext * context = 0)
 void
 QGLShaderProgram::hasOpenGLShaderPrograms(...)
 PREINIT:
@@ -535,7 +535,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void removeShader()
+## void removeShader(QGLShader * shader)
 void
 QGLShaderProgram::removeShader(...)
 PREINIT:
@@ -554,26 +554,26 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setAttributeArray(, , )
-## void setAttributeArray(, ,  = 0)
-## void setAttributeArray(, , )
-## void setAttributeArray(, ,  = 0)
-## void setAttributeArray(, , )
-## void setAttributeArray(, ,  = 0)
-## void setAttributeArray(, , )
-## void setAttributeArray(, ,  = 0)
-## void setAttributeArray(, , )
-## void setAttributeArray(, ,  = 0)
-## void setAttributeArray(, , )
-## void setAttributeArray(, ,  = 0)
-## void setAttributeArray(, , , )
-## void setAttributeArray(, , ,  = 0)
-## void setAttributeArray(, , , )
-## void setAttributeArray(, , ,  = 0)
-## void setAttributeArray(, , , , )
-## void setAttributeArray(, , , ,  = 0)
-## void setAttributeArray(, , , , )
-## void setAttributeArray(, , , ,  = 0)
+## void setAttributeArray(int location, const QVector2D * values, int stride)
+## void setAttributeArray(int location, const QVector2D * values, int stride = 0)
+## void setAttributeArray(int location, const QVector3D * values, int stride)
+## void setAttributeArray(int location, const QVector3D * values, int stride = 0)
+## void setAttributeArray(int location, const QVector4D * values, int stride)
+## void setAttributeArray(int location, const QVector4D * values, int stride = 0)
+## void setAttributeArray(const char * name, const QVector2D * values, int stride)
+## void setAttributeArray(const char * name, const QVector2D * values, int stride = 0)
+## void setAttributeArray(const char * name, const QVector3D * values, int stride)
+## void setAttributeArray(const char * name, const QVector3D * values, int stride = 0)
+## void setAttributeArray(const char * name, const QVector4D * values, int stride)
+## void setAttributeArray(const char * name, const QVector4D * values, int stride = 0)
+## void setAttributeArray(int location, const GLfloat * values, int tupleSize, int stride)
+## void setAttributeArray(int location, const GLfloat * values, int tupleSize, int stride = 0)
+## void setAttributeArray(const char * name, const GLfloat * values, int tupleSize, int stride)
+## void setAttributeArray(const char * name, const GLfloat * values, int tupleSize, int stride = 0)
+## void setAttributeArray(int location, GLenum type, const void * values, int tupleSize, int stride)
+## void setAttributeArray(int location, GLenum type, const void * values, int tupleSize, int stride = 0)
+## void setAttributeArray(const char * name, GLenum type, const void * values, int tupleSize, int stride)
+## void setAttributeArray(const char * name, GLenum type, const void * values, int tupleSize, int stride = 0)
 void
 QGLShaderProgram::setAttributeArray(...)
 PREINIT:
@@ -869,7 +869,7 @@ PPCODE:
     (void)THIS->setAttributeArray(arge0, arge1, arge2, arge3);
     XSRETURN(0);
     }
-        else if (SvIOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4))) {
+        else if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4))) {
       arg110 = (int)SvIV(ST(1));
       arg111 = (GLenum)SvUV(ST(2));
       arg112 = reinterpret_cast<void *>(SvIV(ST(3)));
@@ -877,7 +877,7 @@ PPCODE:
     (void)THIS->setAttributeArray(arg110, arg111, arg112, arg113, arg114);
     XSRETURN(0);
     }
-        else if (SvPOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4))) {
+        else if (SvPOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4))) {
       arg130 = (const char *)SvPV_nolen(ST(1));
       arg131 = (GLenum)SvUV(ST(2));
       arg132 = reinterpret_cast<void *>(SvIV(ST(3)));
@@ -891,7 +891,7 @@ PPCODE:
       }
       case 6:
       {
-        if (SvIOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
+        if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
       arg100 = (int)SvIV(ST(1));
       arg101 = (GLenum)SvUV(ST(2));
       arg102 = reinterpret_cast<void *>(SvIV(ST(3)));
@@ -900,7 +900,7 @@ PPCODE:
     (void)THIS->setAttributeArray(arg100, arg101, arg102, arg103, arg104);
     XSRETURN(0);
     }
-        else if (SvPOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
+        else if (SvPOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
       arg120 = (const char *)SvPV_nolen(ST(1));
       arg121 = (GLenum)SvUV(ST(2));
       arg122 = reinterpret_cast<void *>(SvIV(ST(3)));
@@ -918,10 +918,10 @@ PPCODE:
         break;
     }
 
-## void setAttributeBuffer(, , , , )
-## void setAttributeBuffer(, , , ,  = 0)
-## void setAttributeBuffer(, , , , )
-## void setAttributeBuffer(, , , ,  = 0)
+## void setAttributeBuffer(int location, GLenum type, int offset, int tupleSize, int stride)
+## void setAttributeBuffer(int location, GLenum type, int offset, int tupleSize, int stride = 0)
+## void setAttributeBuffer(const char * name, GLenum type, int offset, int tupleSize, int stride)
+## void setAttributeBuffer(const char * name, GLenum type, int offset, int tupleSize, int stride = 0)
 void
 QGLShaderProgram::setAttributeBuffer(...)
 PREINIT:
@@ -949,7 +949,7 @@ PPCODE:
     switch(items) {
       case 5:
       {
-        if (SvIOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4))) {
+        if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4))) {
       arg10 = (int)SvIV(ST(1));
       arg11 = (GLenum)SvUV(ST(2));
       arg12 = (int)SvIV(ST(3));
@@ -957,7 +957,7 @@ PPCODE:
     (void)THIS->setAttributeBuffer(arg10, arg11, arg12, arg13, arg14);
     XSRETURN(0);
     }
-        else if (SvPOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4))) {
+        else if (SvPOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4))) {
       arg30 = (const char *)SvPV_nolen(ST(1));
       arg31 = (GLenum)SvUV(ST(2));
       arg32 = (int)SvIV(ST(3));
@@ -971,7 +971,7 @@ PPCODE:
       }
       case 6:
       {
-        if (SvIOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
+        if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
       arg00 = (int)SvIV(ST(1));
       arg01 = (GLenum)SvUV(ST(2));
       arg02 = (int)SvIV(ST(3));
@@ -980,7 +980,7 @@ PPCODE:
     (void)THIS->setAttributeBuffer(arg00, arg01, arg02, arg03, arg04);
     XSRETURN(0);
     }
-        else if (SvPOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
+        else if (SvPOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3)) && SvIOK(ST(4)) && SvIOK(ST(5))) {
       arg20 = (const char *)SvPV_nolen(ST(1));
       arg21 = (GLenum)SvUV(ST(2));
       arg22 = (int)SvIV(ST(3));
@@ -998,24 +998,24 @@ PPCODE:
         break;
     }
 
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, )
-## void setAttributeValue(, , )
-## void setAttributeValue(, , )
-## void setAttributeValue(, , , )
-## void setAttributeValue(, , , )
-## void setAttributeValue(, , , )
-## void setAttributeValue(, , , )
-## void setAttributeValue(, , , , )
-## void setAttributeValue(, , , , )
+## void setAttributeValue(int location, GLfloat value)
+## void setAttributeValue(int location, const QVector2D & value)
+## void setAttributeValue(int location, const QVector3D & value)
+## void setAttributeValue(int location, const QVector4D & value)
+## void setAttributeValue(int location, const QColor & value)
+## void setAttributeValue(const char * name, GLfloat value)
+## void setAttributeValue(const char * name, const QVector2D & value)
+## void setAttributeValue(const char * name, const QVector3D & value)
+## void setAttributeValue(const char * name, const QVector4D & value)
+## void setAttributeValue(const char * name, const QColor & value)
+## void setAttributeValue(int location, GLfloat x, GLfloat y)
+## void setAttributeValue(const char * name, GLfloat x, GLfloat y)
+## void setAttributeValue(int location, GLfloat x, GLfloat y, GLfloat z)
+## void setAttributeValue(int location, const GLfloat * values, int columns, int rows)
+## void setAttributeValue(const char * name, GLfloat x, GLfloat y, GLfloat z)
+## void setAttributeValue(const char * name, const GLfloat * values, int columns, int rows)
+## void setAttributeValue(int location, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+## void setAttributeValue(const char * name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 void
 QGLShaderProgram::setAttributeValue(...)
 PREINIT:
@@ -1232,31 +1232,31 @@ PPCODE:
         break;
     }
 
-## void setGeometryInputType()
+## void setGeometryInputType(GLenum inputType)
 void
 QGLShaderProgram::setGeometryInputType(...)
 PREINIT:
 GLenum arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (GLenum)SvUV(ST(1));
     (void)THIS->setGeometryInputType(arg00);
     XSRETURN(0);
     }
 
-## void setGeometryOutputType()
+## void setGeometryOutputType(GLenum outputType)
 void
 QGLShaderProgram::setGeometryOutputType(...)
 PREINIT:
 GLenum arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (GLenum)SvUV(ST(1));
     (void)THIS->setGeometryOutputType(arg00);
     XSRETURN(0);
     }
 
-## void setGeometryOutputVertexCount()
+## void setGeometryOutputVertexCount(int count)
 void
 QGLShaderProgram::setGeometryOutputVertexCount(...)
 PREINIT:
@@ -1268,44 +1268,44 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, const GLfloat  T_ARRAY_VALUE[2][2])
-## void setUniformValue(, const GLfloat  T_ARRAY_VALUE[3][3])
-## void setUniformValue(, const GLfloat  T_ARRAY_VALUE[4][4])
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, )
-## void setUniformValue(, const GLfloat  T_ARRAY_VALUE[2][2])
-## void setUniformValue(, const GLfloat  T_ARRAY_VALUE[3][3])
-## void setUniformValue(, const GLfloat  T_ARRAY_VALUE[4][4])
-## void setUniformValue(, )
-## void setUniformValue(, , )
-## void setUniformValue(, , )
-## void setUniformValue(, , , )
-## void setUniformValue(, , , )
-## void setUniformValue(, , , , )
-## void setUniformValue(, , , , )
+## void setUniformValue(int location, GLfloat value)
+## void setUniformValue(int location, GLint value)
+## void setUniformValue(int location, GLuint value)
+## void setUniformValue(int location, const QVector2D & value)
+## void setUniformValue(int location, const QVector3D & value)
+## void setUniformValue(int location, const QVector4D & value)
+## void setUniformValue(int location, const QColor & color)
+## void setUniformValue(int location, const QPoint & point)
+## void setUniformValue(int location, const QPointF & point)
+## void setUniformValue(int location, const QSize & size)
+## void setUniformValue(int location, const QSizeF & size)
+## void setUniformValue(int location, const QMatrix4x4 & value)
+## void setUniformValue(int location, const GLfloat  T_ARRAY_VALUE[2][2])
+## void setUniformValue(int location, const GLfloat  T_ARRAY_VALUE[3][3])
+## void setUniformValue(int location, const GLfloat  T_ARRAY_VALUE[4][4])
+## void setUniformValue(int location, const QTransform & value)
+## void setUniformValue(const char * name, GLfloat value)
+## void setUniformValue(const char * name, GLint value)
+## void setUniformValue(const char * name, GLuint value)
+## void setUniformValue(const char * name, const QVector2D & value)
+## void setUniformValue(const char * name, const QVector3D & value)
+## void setUniformValue(const char * name, const QVector4D & value)
+## void setUniformValue(const char * name, const QColor & color)
+## void setUniformValue(const char * name, const QPoint & point)
+## void setUniformValue(const char * name, const QPointF & point)
+## void setUniformValue(const char * name, const QSize & size)
+## void setUniformValue(const char * name, const QSizeF & size)
+## void setUniformValue(const char * name, const QMatrix4x4 & value)
+## void setUniformValue(const char * name, const GLfloat  T_ARRAY_VALUE[2][2])
+## void setUniformValue(const char * name, const GLfloat  T_ARRAY_VALUE[3][3])
+## void setUniformValue(const char * name, const GLfloat  T_ARRAY_VALUE[4][4])
+## void setUniformValue(const char * name, const QTransform & value)
+## void setUniformValue(int location, GLfloat x, GLfloat y)
+## void setUniformValue(const char * name, GLfloat x, GLfloat y)
+## void setUniformValue(int location, GLfloat x, GLfloat y, GLfloat z)
+## void setUniformValue(const char * name, GLfloat x, GLfloat y, GLfloat z)
+## void setUniformValue(int location, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+## void setUniformValue(const char * name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 void
 QGLShaderProgram::setUniformValue(...)
 PREINIT:
@@ -1413,7 +1413,7 @@ PPCODE:
     (void)THIS->setUniformValue(arg10, arg11);
     XSRETURN(0);
     }
-        else if (SvIOK(ST(1)) && SvUOK(ST(2))) {
+        else if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg20 = (int)SvIV(ST(1));
       arg21 = (GLuint)SvUV(ST(2));
     (void)THIS->setUniformValue(arg20, arg21);
@@ -1509,7 +1509,7 @@ PPCODE:
     (void)THIS->setUniformValue(arg110, arg111);
     XSRETURN(0);
     }
-        else if (SvPOK(ST(1)) && SvUOK(ST(2))) {
+        else if (SvPOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg120 = (const char *)SvPV_nolen(ST(1));
       arg121 = (GLuint)SvUV(ST(2));
     (void)THIS->setUniformValue(arg120, arg121);
@@ -1668,20 +1668,20 @@ PPCODE:
         break;
     }
 
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , )
-## void setUniformValueArray(, , , )
-## void setUniformValueArray(, , , )
+## void setUniformValueArray(int location, const GLint * values, int count)
+## void setUniformValueArray(int location, const GLuint * values, int count)
+## void setUniformValueArray(int location, const QVector2D * values, int count)
+## void setUniformValueArray(int location, const QVector3D * values, int count)
+## void setUniformValueArray(int location, const QVector4D * values, int count)
+## void setUniformValueArray(int location, const QMatrix4x4 * values, int count)
+## void setUniformValueArray(const char * name, const GLint * values, int count)
+## void setUniformValueArray(const char * name, const GLuint * values, int count)
+## void setUniformValueArray(const char * name, const QVector2D * values, int count)
+## void setUniformValueArray(const char * name, const QVector3D * values, int count)
+## void setUniformValueArray(const char * name, const QVector4D * values, int count)
+## void setUniformValueArray(const char * name, const QMatrix4x4 * values, int count)
+## void setUniformValueArray(int location, const GLfloat * values, int count, int tupleSize)
+## void setUniformValueArray(const char * name, const GLfloat * values, int count, int tupleSize)
 void
 QGLShaderProgram::setUniformValueArray(...)
 PREINIT:
@@ -1743,7 +1743,7 @@ PPCODE:
     (void)THIS->setUniformValueArray(arg00, arg01, arg02);
     XSRETURN(0);
     }
-        else if (SvIOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3))) {
+        else if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3))) {
       arg10 = (int)SvIV(ST(1));
       {
         GLuint tmp = static_cast<GLuint>(SvUV(ST(2)));
@@ -1819,7 +1819,7 @@ PPCODE:
     (void)THIS->setUniformValueArray(arg60, arg61, arg62);
     XSRETURN(0);
     }
-        else if (SvPOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3))) {
+        else if (SvPOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3))) {
       arg70 = (const char *)SvPV_nolen(ST(1));
       {
         GLuint tmp = static_cast<GLuint>(SvUV(ST(2)));
@@ -1922,9 +1922,9 @@ PPCODE:
         break;
     }
 
-## int uniformLocation()
-## int uniformLocation()
-## int uniformLocation()
+## int uniformLocation(const char * name)
+## int uniformLocation(const QByteArray & name)
+## int uniformLocation(const QString & name)
 void
 QGLShaderProgram::uniformLocation(...)
 PREINIT:

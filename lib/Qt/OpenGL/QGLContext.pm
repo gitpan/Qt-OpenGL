@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -23,55 +23,55 @@ Qt::OpenGL::QGLContext
 
 =over
 
-=item   QGLContext()
+=item   QGLContext(const QGLFormat & format)
 
-=item   QGLContext(, )
+=item   QGLContext(const QGLFormat & format, QPaintDevice * device)
 
 =item   ~QGLContext()
 
-=item  static bool areSharing(, )
+=item  static bool areSharing(const QGLContext * context1, const QGLContext * context2)
 
-=item  GLuint bindTexture()
+=item  GLuint bindTexture(const QString & fileName)
 
-=item  GLuint bindTexture(, , )
+=item  GLuint bindTexture(const QImage & image, GLenum target, GLint format)
 
-=item  GLuint bindTexture(, ,  = GL_RGBA)
+=item  GLuint bindTexture(const QImage & image, GLenum target, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
+=item  GLuint bindTexture(const QImage & image, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(, , )
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format)
 
-=item  GLuint bindTexture(, ,  = GL_RGBA)
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(, , , )
+=item  GLuint bindTexture(const QImage & image, GLenum target, GLint format, QFlags<QGLContext::BindOption> options)
 
-=item  GLuint bindTexture(, , , )
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format, QFlags<QGLContext::BindOption> options)
 
-=item  bool create()
+=item  bool create(const QGLContext * shareContext)
 
-=item  bool create( = 0)
+=item  bool create(const QGLContext * shareContext = 0)
 
 =item  static const QGLContext * currentContext()
 
-=item  void deleteTexture()
+=item  void deleteTexture(GLuint tx_id)
 
 =item  QPaintDevice * device()
 
 =item  void doneCurrent()
 
-=item  void drawTexture(, , )
+=item  void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
 
-=item  void drawTexture(, ,  = GL_TEXTURE_2D)
+=item  void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 
-=item  void drawTexture(, , )
+=item  void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
 
-=item  void drawTexture(, ,  = GL_TEXTURE_2D)
+=item  void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 
 =item  QGLFormat format()
 
-=item  void * getProcAddress()
+=item  void * getProcAddress(const QString & proc)
 
 =item  bool isSharing()
 
@@ -85,9 +85,9 @@ Qt::OpenGL::QGLContext
 
 =item  void reset()
 
-=item  void setFormat()
+=item  void setFormat(const QGLFormat & format)
 
-=item  static void setTextureCacheLimit()
+=item  static void setTextureCacheLimit(int size)
 
 =item  void swapBuffers()
 

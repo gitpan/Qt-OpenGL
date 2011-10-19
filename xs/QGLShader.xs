@@ -18,10 +18,10 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QGLShader(, )
-##  QGLShader(,  = 0)
-##  QGLShader(, , )
-##  QGLShader(, ,  = 0)
+##  QGLShader(QFlags<QGLShader::ShaderTypeBit> type, QObject * parent)
+##  QGLShader(QFlags<QGLShader::ShaderTypeBit> type, QObject * parent = 0)
+##  QGLShader(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context, QObject * parent)
+##  QGLShader(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context, QObject * parent = 0)
   void
 QGLShader::new(...)
 PREINIT:
@@ -128,9 +128,9 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## bool compileSourceCode()
-## bool compileSourceCode()
-## bool compileSourceCode()
+## bool compileSourceCode(const char * source)
+## bool compileSourceCode(const QByteArray & source)
+## bool compileSourceCode(const QString & source)
 void
 QGLShader::compileSourceCode(...)
 PREINIT:
@@ -171,7 +171,7 @@ PPCODE:
         break;
     }
 
-## bool compileSourceFile()
+## bool compileSourceFile(const QString & fileName)
 void
 QGLShader::compileSourceFile(...)
 PREINIT:
@@ -185,8 +185,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## static bool hasOpenGLShaders(, )
-## static bool hasOpenGLShaders(,  = 0)
+## static bool hasOpenGLShaders(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context)
+## static bool hasOpenGLShaders(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context = 0)
 void
 QGLShader::hasOpenGLShaders(...)
 PREINIT:

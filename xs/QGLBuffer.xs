@@ -19,8 +19,8 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QGLBuffer()
-##  QGLBuffer()
-##  QGLBuffer()
+##  QGLBuffer(QGLBuffer::Type type)
+##  QGLBuffer(const QGLBuffer & other)
   void
 QGLBuffer::new(...)
 PREINIT:
@@ -72,8 +72,8 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## void allocate()
-## void allocate(, )
+## void allocate(int count)
+## void allocate(const void * data, int count)
 void
 QGLBuffer::allocate(...)
 PREINIT:
@@ -173,7 +173,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void * map()
+## void * map(QGLBuffer::Access access)
 void
 QGLBuffer::map(...)
 PREINIT:
@@ -187,7 +187,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QGLBuffer & operator=()
+## QGLBuffer & operator=(const QGLBuffer & other)
 void
 QGLBuffer::operator_assign(...)
 PREINIT:
@@ -201,7 +201,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool read(, , )
+## bool read(int offset, void * data, int count)
 void
 QGLBuffer::read(...)
 PREINIT:
@@ -220,7 +220,7 @@ PPCODE:
     }
 
 ## void release()
-## static void release()
+## static void release(QGLBuffer::Type type)
 void
 QGLBuffer::release(...)
 PREINIT:
@@ -252,7 +252,7 @@ PPCODE:
         break;
     }
 
-## void setUsagePattern()
+## void setUsagePattern(QGLBuffer::UsagePattern value)
 void
 QGLBuffer::setUsagePattern(...)
 PREINIT:
@@ -316,7 +316,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void write(, , )
+## void write(int offset, const void * data, int count)
 void
 QGLBuffer::write(...)
 PREINIT:

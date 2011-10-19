@@ -19,9 +19,9 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QGLFormat()
-##  QGLFormat()
-##  QGLFormat(, )
-##  QGLFormat(,  = 0)
+##  QGLFormat(const QGLFormat & other)
+##  QGLFormat(QFlags<QGL::FormatOption> options, int plane)
+##  QGLFormat(QFlags<QGL::FormatOption> options, int plane = 0)
   void
 QGLFormat::new(...)
 PREINIT:
@@ -324,7 +324,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QGLFormat & operator=()
+## QGLFormat & operator=(const QGLFormat & other)
 void
 QGLFormat::operator_assign(...)
 PREINIT:
@@ -416,7 +416,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void setAccum()
+## void setAccum(bool enable)
 void
 QGLFormat::setAccum(...)
 PREINIT:
@@ -428,7 +428,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setAccumBufferSize()
+## void setAccumBufferSize(int size)
 void
 QGLFormat::setAccumBufferSize(...)
 PREINIT:
@@ -440,7 +440,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setAlpha()
+## void setAlpha(bool enable)
 void
 QGLFormat::setAlpha(...)
 PREINIT:
@@ -452,7 +452,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setAlphaBufferSize()
+## void setAlphaBufferSize(int size)
 void
 QGLFormat::setAlphaBufferSize(...)
 PREINIT:
@@ -464,7 +464,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setBlueBufferSize()
+## void setBlueBufferSize(int size)
 void
 QGLFormat::setBlueBufferSize(...)
 PREINIT:
@@ -476,7 +476,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## static void setDefaultFormat()
+## static void setDefaultFormat(const QGLFormat & f)
 void
 QGLFormat::setDefaultFormat(...)
 PREINIT:
@@ -488,7 +488,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## static void setDefaultOverlayFormat()
+## static void setDefaultOverlayFormat(const QGLFormat & f)
 void
 QGLFormat::setDefaultOverlayFormat(...)
 PREINIT:
@@ -500,7 +500,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setDepth()
+## void setDepth(bool enable)
 void
 QGLFormat::setDepth(...)
 PREINIT:
@@ -512,7 +512,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setDepthBufferSize()
+## void setDepthBufferSize(int size)
 void
 QGLFormat::setDepthBufferSize(...)
 PREINIT:
@@ -524,7 +524,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setDirectRendering()
+## void setDirectRendering(bool enable)
 void
 QGLFormat::setDirectRendering(...)
 PREINIT:
@@ -536,7 +536,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setDoubleBuffer()
+## void setDoubleBuffer(bool enable)
 void
 QGLFormat::setDoubleBuffer(...)
 PREINIT:
@@ -548,7 +548,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setGreenBufferSize()
+## void setGreenBufferSize(int size)
 void
 QGLFormat::setGreenBufferSize(...)
 PREINIT:
@@ -560,7 +560,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setOption()
+## void setOption(QFlags<QGL::FormatOption> opt)
 void
 QGLFormat::setOption(...)
 PREINIT:
@@ -572,7 +572,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setOverlay()
+## void setOverlay(bool enable)
 void
 QGLFormat::setOverlay(...)
 PREINIT:
@@ -584,7 +584,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setPlane()
+## void setPlane(int plane)
 void
 QGLFormat::setPlane(...)
 PREINIT:
@@ -596,7 +596,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setProfile()
+## void setProfile(QGLFormat::OpenGLContextProfile profile)
 void
 QGLFormat::setProfile(...)
 PREINIT:
@@ -608,7 +608,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setRedBufferSize()
+## void setRedBufferSize(int size)
 void
 QGLFormat::setRedBufferSize(...)
 PREINIT:
@@ -620,7 +620,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setRgba()
+## void setRgba(bool enable)
 void
 QGLFormat::setRgba(...)
 PREINIT:
@@ -632,7 +632,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setSampleBuffers()
+## void setSampleBuffers(bool enable)
 void
 QGLFormat::setSampleBuffers(...)
 PREINIT:
@@ -644,7 +644,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setSamples()
+## void setSamples(int numSamples)
 void
 QGLFormat::setSamples(...)
 PREINIT:
@@ -656,7 +656,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setStencil()
+## void setStencil(bool enable)
 void
 QGLFormat::setStencil(...)
 PREINIT:
@@ -668,7 +668,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setStencilBufferSize()
+## void setStencilBufferSize(int size)
 void
 QGLFormat::setStencilBufferSize(...)
 PREINIT:
@@ -680,7 +680,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setStereo()
+## void setStereo(bool enable)
 void
 QGLFormat::setStereo(...)
 PREINIT:
@@ -692,7 +692,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setSwapInterval()
+## void setSwapInterval(int interval)
 void
 QGLFormat::setSwapInterval(...)
 PREINIT:
@@ -704,7 +704,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setVersion(, )
+## void setVersion(int major, int minor)
 void
 QGLFormat::setVersion(...)
 PREINIT:
@@ -770,7 +770,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool testOption()
+## bool testOption(QFlags<QGL::FormatOption> opt)
 void
 QGLFormat::testOption(...)
 PREINIT:

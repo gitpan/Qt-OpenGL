@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,15 +25,15 @@ Qt::OpenGL::QGLBuffer
 
 =item   QGLBuffer()
 
-=item   QGLBuffer()
+=item   QGLBuffer(QGLBuffer::Type type)
 
-=item   QGLBuffer()
+=item   QGLBuffer(const QGLBuffer & other)
 
 =item   ~QGLBuffer()
 
-=item  void allocate()
+=item  void allocate(int count)
 
-=item  void allocate(, )
+=item  void allocate(const void * data, int count)
 
 =item  bool bind()
 
@@ -45,17 +45,17 @@ Qt::OpenGL::QGLBuffer
 
 =item  bool isCreated()
 
-=item  void * map()
+=item  void * map(QGLBuffer::Access access)
 
-=item  QGLBuffer & operator=()
+=item  QGLBuffer & operator=(const QGLBuffer & other)
 
-=item  bool read(, , )
+=item  bool read(int offset, void * data, int count)
 
 =item  void release()
 
-=item  static void release()
+=item  static void release(QGLBuffer::Type type)
 
-=item  void setUsagePattern()
+=item  void setUsagePattern(QGLBuffer::UsagePattern value)
 
 =item  int size()
 
@@ -65,7 +65,7 @@ Qt::OpenGL::QGLBuffer
 
 =item  QGLBuffer::UsagePattern usagePattern()
 
-=item  void write(, , )
+=item  void write(int offset, const void * data, int count)
 
 
 =back

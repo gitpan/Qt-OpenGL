@@ -18,12 +18,12 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QGLPixelBuffer(, , )
-##  QGLPixelBuffer(, ,  = 0)
-##  QGLPixelBuffer(,  = QGLFormat::defaultFormat(),  = 0)
-##  QGLPixelBuffer(, , , )
-##  QGLPixelBuffer(, , ,  = 0)
-##  QGLPixelBuffer(, ,  = QGLFormat::defaultFormat(),  = 0)
+##  QGLPixelBuffer(const QSize & size, const QGLFormat & format, QGLWidget * shareWidget)
+##  QGLPixelBuffer(const QSize & size, const QGLFormat & format, QGLWidget * shareWidget = 0)
+##  QGLPixelBuffer(const QSize & size, const QGLFormat & format = QGLFormat::defaultFormat(), QGLWidget * shareWidget = 0)
+##  QGLPixelBuffer(int width, int height, const QGLFormat & format, QGLWidget * shareWidget)
+##  QGLPixelBuffer(int width, int height, const QGLFormat & format, QGLWidget * shareWidget = 0)
+##  QGLPixelBuffer(int width, int height, const QGLFormat & format = QGLFormat::defaultFormat(), QGLWidget * shareWidget = 0)
   void
 QGLPixelBuffer::new(...)
 PREINIT:
@@ -154,11 +154,11 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## GLuint bindTexture()
-## GLuint bindTexture(, )
-## GLuint bindTexture(,  = GL_TEXTURE_2D)
-## GLuint bindTexture(, )
-## GLuint bindTexture(,  = GL_TEXTURE_2D)
+## GLuint bindTexture(const QString & fileName)
+## GLuint bindTexture(const QImage & image, GLenum target)
+## GLuint bindTexture(const QImage & image, GLenum target = GL_TEXTURE_2D)
+## GLuint bindTexture(const QPixmap & pixmap, GLenum target)
+## GLuint bindTexture(const QPixmap & pixmap, GLenum target = GL_TEXTURE_2D)
 void
 QGLPixelBuffer::bindTexture(...)
 PREINIT:
@@ -202,7 +202,7 @@ PPCODE:
       }
       case 3:
       {
-        if (sv_isa(ST(1), "Qt::Gui::QImage") && SvUOK(ST(2))) {
+        if (sv_isa(ST(1), "Qt::Gui::QImage") && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg10 = reinterpret_cast<QImage *>(SvIV((SV*)SvRV(ST(1))));
       arg11 = (GLenum)SvUV(ST(2));
     GLuint ret = THIS->bindTexture(*arg10, arg11);
@@ -210,7 +210,7 @@ PPCODE:
     sv_setuv(ST(0), (UV)ret);
     XSRETURN(1);
     }
-        else if (sv_isa(ST(1), "Qt::Gui::QPixmap") && SvUOK(ST(2))) {
+        else if (sv_isa(ST(1), "Qt::Gui::QPixmap") && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg30 = reinterpret_cast<QPixmap *>(SvIV((SV*)SvRV(ST(1))));
       arg31 = (GLenum)SvUV(ST(2));
     GLuint ret = THIS->bindTexture(*arg30, arg31);
@@ -227,13 +227,13 @@ PPCODE:
         break;
     }
 
-## bool bindToDynamicTexture()
+## bool bindToDynamicTexture(GLuint texture)
 void
 QGLPixelBuffer::bindToDynamicTexture(...)
 PREINIT:
 GLuint arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (GLuint)SvUV(ST(1));
     bool ret = THIS->bindToDynamicTexture(arg00);
     ST(0) = sv_newmortal();
@@ -241,13 +241,13 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void deleteTexture()
+## void deleteTexture(GLuint texture_id)
 void
 QGLPixelBuffer::deleteTexture(...)
 PREINIT:
 GLuint arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (GLuint)SvUV(ST(1));
     (void)THIS->deleteTexture(arg00);
     XSRETURN(0);
@@ -266,10 +266,10 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void drawTexture(, , )
-## void drawTexture(, ,  = GL_TEXTURE_2D)
-## void drawTexture(, , )
-## void drawTexture(, ,  = GL_TEXTURE_2D)
+## void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
+## void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+## void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
+## void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 void
 QGLPixelBuffer::drawTexture(...)
 PREINIT:
@@ -289,13 +289,13 @@ PPCODE:
     switch(items) {
       case 3:
       {
-        if (sv_isa(ST(1), "Qt::Core::QRectF") && SvUOK(ST(2))) {
+        if (sv_isa(ST(1), "Qt::Core::QRectF") && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg10 = reinterpret_cast<QRectF *>(SvIV((SV*)SvRV(ST(1))));
       arg11 = (GLuint)SvUV(ST(2));
     (void)THIS->drawTexture(*arg10, arg11, arg12);
     XSRETURN(0);
     }
-        else if (sv_isa(ST(1), "Qt::Core::QPointF") && SvUOK(ST(2))) {
+        else if (sv_isa(ST(1), "Qt::Core::QPointF") && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg30 = reinterpret_cast<QPointF *>(SvIV((SV*)SvRV(ST(1))));
       arg31 = (GLuint)SvUV(ST(2));
     (void)THIS->drawTexture(*arg30, arg31, arg32);
@@ -307,14 +307,14 @@ PPCODE:
       }
       case 4:
       {
-        if (sv_isa(ST(1), "Qt::Core::QRectF") && SvUOK(ST(2)) && SvUOK(ST(3))) {
+        if (sv_isa(ST(1), "Qt::Core::QRectF") && (SvIOK(ST(2)) || SvUOK(ST(2))) && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg00 = reinterpret_cast<QRectF *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = (GLuint)SvUV(ST(2));
       arg02 = (GLenum)SvUV(ST(3));
     (void)THIS->drawTexture(*arg00, arg01, arg02);
     XSRETURN(0);
     }
-        else if (sv_isa(ST(1), "Qt::Core::QPointF") && SvUOK(ST(2)) && SvUOK(ST(3))) {
+        else if (sv_isa(ST(1), "Qt::Core::QPointF") && (SvIOK(ST(2)) || SvUOK(ST(2))) && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg20 = reinterpret_cast<QPointF *>(SvIV((SV*)SvRV(ST(1))));
       arg21 = (GLuint)SvUV(ST(2));
       arg22 = (GLenum)SvUV(ST(3));
@@ -458,13 +458,13 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void updateDynamicTexture()
+## void updateDynamicTexture(GLuint texture_id)
 void
 QGLPixelBuffer::updateDynamicTexture(...)
 PREINIT:
 GLuint arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (GLuint)SvUV(ST(1));
     (void)THIS->updateDynamicTexture(arg00);
     XSRETURN(0);

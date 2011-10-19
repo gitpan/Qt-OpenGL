@@ -18,18 +18,18 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QGLFramebufferObject(, )
-##  QGLFramebufferObject(,  = GL_TEXTURE_2D)
-##  QGLFramebufferObject(, )
-##  QGLFramebufferObject(, , )
-##  QGLFramebufferObject(, ,  = GL_TEXTURE_2D)
-##  QGLFramebufferObject(, , )
-##  QGLFramebufferObject(, , , )
-##  QGLFramebufferObject(, , ,  = GL_RGBA8)
-##  QGLFramebufferObject(, ,  = GL_TEXTURE_2D,  = GL_RGBA8)
-##  QGLFramebufferObject(, , , , )
-##  QGLFramebufferObject(, , , ,  = GL_RGBA8)
-##  QGLFramebufferObject(, , ,  = GL_TEXTURE_2D,  = GL_RGBA8)
+##  QGLFramebufferObject(const QSize & size, GLenum target)
+##  QGLFramebufferObject(const QSize & size, GLenum target = GL_TEXTURE_2D)
+##  QGLFramebufferObject(const QSize & size, const QGLFramebufferObjectFormat & format)
+##  QGLFramebufferObject(int width, int height, GLenum target)
+##  QGLFramebufferObject(int width, int height, GLenum target = GL_TEXTURE_2D)
+##  QGLFramebufferObject(int width, int height, const QGLFramebufferObjectFormat & format)
+##  QGLFramebufferObject(const QSize & size, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format)
+##  QGLFramebufferObject(const QSize & size, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format = GL_RGBA8)
+##  QGLFramebufferObject(const QSize & size, QGLFramebufferObject::Attachment attachment, GLenum target = GL_TEXTURE_2D, GLenum internal_format = GL_RGBA8)
+##  QGLFramebufferObject(int width, int height, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format)
+##  QGLFramebufferObject(int width, int height, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format = GL_RGBA8)
+##  QGLFramebufferObject(int width, int height, QGLFramebufferObject::Attachment attachment, GLenum target = GL_TEXTURE_2D, GLenum internal_format = GL_RGBA8)
   void
 QGLFramebufferObject::new(...)
 PREINIT:
@@ -93,7 +93,7 @@ PPCODE:
       }
       case 3:
       {
-        if (sv_isa(ST(1), "Qt::Core::QSize") && SvUOK(ST(2))) {
+        if (sv_isa(ST(1), "Qt::Core::QSize") && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg00 = reinterpret_cast<QSize *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = (GLenum)SvUV(ST(2));
     ret = new QGLFramebufferObject(*arg00, arg01);
@@ -131,7 +131,7 @@ PPCODE:
       }
       case 4:
       {
-        if (SvIOK(ST(1)) && SvIOK(ST(2)) && SvUOK(ST(3))) {
+        if (SvIOK(ST(1)) && SvIOK(ST(2)) && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg30 = (int)SvIV(ST(1));
       arg31 = (int)SvIV(ST(2));
       arg32 = (GLenum)SvUV(ST(3));
@@ -149,7 +149,7 @@ PPCODE:
     sv_setref_pv(ST(0), "Qt::OpenGL::QGLFramebufferObject", (void *)ret);
     XSRETURN(1);
     }
-        else if (sv_isa(ST(1), "Qt::Core::QSize") && SvIOK(ST(2)) && SvUOK(ST(3))) {
+        else if (sv_isa(ST(1), "Qt::Core::QSize") && SvIOK(ST(2)) && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg70 = reinterpret_cast<QSize *>(SvIV((SV*)SvRV(ST(1))));
       arg71 = (QGLFramebufferObject::Attachment)SvIV(ST(2));
       arg72 = (GLenum)SvUV(ST(3));
@@ -173,7 +173,7 @@ PPCODE:
       }
       case 5:
       {
-        if (sv_isa(ST(1), "Qt::Core::QSize") && SvIOK(ST(2)) && SvUOK(ST(3)) && SvUOK(ST(4))) {
+        if (sv_isa(ST(1), "Qt::Core::QSize") && SvIOK(ST(2)) && (SvIOK(ST(3)) || SvUOK(ST(3))) && (SvIOK(ST(4)) || SvUOK(ST(4)))) {
       arg60 = reinterpret_cast<QSize *>(SvIV((SV*)SvRV(ST(1))));
       arg61 = (QGLFramebufferObject::Attachment)SvIV(ST(2));
       arg62 = (GLenum)SvUV(ST(3));
@@ -183,7 +183,7 @@ PPCODE:
     sv_setref_pv(ST(0), "Qt::OpenGL::QGLFramebufferObject", (void *)ret);
     XSRETURN(1);
     }
-        else if (SvIOK(ST(1)) && SvIOK(ST(2)) && SvIOK(ST(3)) && SvUOK(ST(4))) {
+        else if (SvIOK(ST(1)) && SvIOK(ST(2)) && SvIOK(ST(3)) && (SvIOK(ST(4)) || SvUOK(ST(4)))) {
       arga0 = (int)SvIV(ST(1));
       arga1 = (int)SvIV(ST(2));
       arga2 = (QGLFramebufferObject::Attachment)SvIV(ST(3));
@@ -199,7 +199,7 @@ PPCODE:
       }
       case 6:
       {
-        if (SvIOK(ST(1)) && SvIOK(ST(2)) && SvIOK(ST(3)) && SvUOK(ST(4)) && SvUOK(ST(5))) {
+        if (SvIOK(ST(1)) && SvIOK(ST(2)) && SvIOK(ST(3)) && (SvIOK(ST(4)) || SvUOK(ST(4))) && (SvIOK(ST(5)) || SvUOK(ST(5)))) {
       arg90 = (int)SvIV(ST(1));
       arg91 = (int)SvIV(ST(2));
       arg92 = (QGLFramebufferObject::Attachment)SvIV(ST(3));
@@ -265,9 +265,9 @@ PPCODE:
     XSRETURN(1);
     }
 
-## static void blitFramebuffer(, , , , , )
-## static void blitFramebuffer(, , , , ,  = GL_NEAREST)
-## static void blitFramebuffer(, , , ,  = GL_COLOR_BUFFER_BIT,  = GL_NEAREST)
+## static void blitFramebuffer(QGLFramebufferObject * target, const QRect & targetRect, QGLFramebufferObject * source, const QRect & sourceRect, GLbitfield buffers, GLenum filter)
+## static void blitFramebuffer(QGLFramebufferObject * target, const QRect & targetRect, QGLFramebufferObject * source, const QRect & sourceRect, GLbitfield buffers, GLenum filter = GL_NEAREST)
+## static void blitFramebuffer(QGLFramebufferObject * target, const QRect & targetRect, QGLFramebufferObject * source, const QRect & sourceRect, GLbitfield buffers = GL_COLOR_BUFFER_BIT, GLenum filter = GL_NEAREST)
 void
 QGLFramebufferObject::blitFramebuffer(...)
 PREINIT:
@@ -321,7 +321,7 @@ PPCODE:
       }
       case 6:
       {
-        if ((sv_derived_from(ST(1), "Qt::OpenGL::QGLFramebufferObject") || ST(1) == &PL_sv_undef) && sv_isa(ST(2), "Qt::Core::QRect") && (sv_derived_from(ST(3), "Qt::OpenGL::QGLFramebufferObject") || ST(3) == &PL_sv_undef) && sv_isa(ST(4), "Qt::Core::QRect") && SvUOK(ST(5))) {
+        if ((sv_derived_from(ST(1), "Qt::OpenGL::QGLFramebufferObject") || ST(1) == &PL_sv_undef) && sv_isa(ST(2), "Qt::Core::QRect") && (sv_derived_from(ST(3), "Qt::OpenGL::QGLFramebufferObject") || ST(3) == &PL_sv_undef) && sv_isa(ST(4), "Qt::Core::QRect") && (SvIOK(ST(5)) || SvUOK(ST(5)))) {
       if (sv_derived_from(ST(1), "Qt::OpenGL::QGLFramebufferObject")) {
         arg10 = reinterpret_cast<QGLFramebufferObject *>(SvIV((SV*)SvRV(ST(1))));
     }
@@ -350,7 +350,7 @@ PPCODE:
       }
       case 7:
       {
-        if ((sv_derived_from(ST(1), "Qt::OpenGL::QGLFramebufferObject") || ST(1) == &PL_sv_undef) && sv_isa(ST(2), "Qt::Core::QRect") && (sv_derived_from(ST(3), "Qt::OpenGL::QGLFramebufferObject") || ST(3) == &PL_sv_undef) && sv_isa(ST(4), "Qt::Core::QRect") && SvUOK(ST(5)) && SvUOK(ST(6))) {
+        if ((sv_derived_from(ST(1), "Qt::OpenGL::QGLFramebufferObject") || ST(1) == &PL_sv_undef) && sv_isa(ST(2), "Qt::Core::QRect") && (sv_derived_from(ST(3), "Qt::OpenGL::QGLFramebufferObject") || ST(3) == &PL_sv_undef) && sv_isa(ST(4), "Qt::Core::QRect") && (SvIOK(ST(5)) || SvUOK(ST(5))) && (SvIOK(ST(6)) || SvUOK(ST(6)))) {
       if (sv_derived_from(ST(1), "Qt::OpenGL::QGLFramebufferObject")) {
         arg00 = reinterpret_cast<QGLFramebufferObject *>(SvIV((SV*)SvRV(ST(1))));
     }
@@ -383,10 +383,10 @@ PPCODE:
         break;
     }
 
-## void drawTexture(, , )
-## void drawTexture(, ,  = GL_TEXTURE_2D)
-## void drawTexture(, , )
-## void drawTexture(, ,  = GL_TEXTURE_2D)
+## void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
+## void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
+## void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
+## void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 void
 QGLFramebufferObject::drawTexture(...)
 PREINIT:
@@ -406,13 +406,13 @@ PPCODE:
     switch(items) {
       case 3:
       {
-        if (sv_isa(ST(1), "Qt::Core::QRectF") && SvUOK(ST(2))) {
+        if (sv_isa(ST(1), "Qt::Core::QRectF") && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg10 = reinterpret_cast<QRectF *>(SvIV((SV*)SvRV(ST(1))));
       arg11 = (GLuint)SvUV(ST(2));
     (void)THIS->drawTexture(*arg10, arg11, arg12);
     XSRETURN(0);
     }
-        else if (sv_isa(ST(1), "Qt::Core::QPointF") && SvUOK(ST(2))) {
+        else if (sv_isa(ST(1), "Qt::Core::QPointF") && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg30 = reinterpret_cast<QPointF *>(SvIV((SV*)SvRV(ST(1))));
       arg31 = (GLuint)SvUV(ST(2));
     (void)THIS->drawTexture(*arg30, arg31, arg32);
@@ -424,14 +424,14 @@ PPCODE:
       }
       case 4:
       {
-        if (sv_isa(ST(1), "Qt::Core::QRectF") && SvUOK(ST(2)) && SvUOK(ST(3))) {
+        if (sv_isa(ST(1), "Qt::Core::QRectF") && (SvIOK(ST(2)) || SvUOK(ST(2))) && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg00 = reinterpret_cast<QRectF *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = (GLuint)SvUV(ST(2));
       arg02 = (GLenum)SvUV(ST(3));
     (void)THIS->drawTexture(*arg00, arg01, arg02);
     XSRETURN(0);
     }
-        else if (sv_isa(ST(1), "Qt::Core::QPointF") && SvUOK(ST(2)) && SvUOK(ST(3))) {
+        else if (sv_isa(ST(1), "Qt::Core::QPointF") && (SvIOK(ST(2)) || SvUOK(ST(2))) && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg20 = reinterpret_cast<QPointF *>(SvIV((SV*)SvRV(ST(1))));
       arg21 = (GLuint)SvUV(ST(2));
       arg22 = (GLenum)SvUV(ST(3));

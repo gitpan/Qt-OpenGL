@@ -16,6 +16,7 @@
 #include "ppport.h"
 #undef do_open
 #undef do_close
+#undef RETURN
 
 typedef GLfloat  T_ARRAY_VALUE[4][4];
 typedef bool (*T_FPOINTER_QINTERNALCALLBACK_QNAMESPACE)(void **);

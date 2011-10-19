@@ -7,8 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
-our $ISA     = qw/Qt::Gui::QPaintDevice/;
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -24,29 +23,29 @@ Qt::OpenGL::QGLFramebufferObject
 
 =over
 
-=item   QGLFramebufferObject(, )
+=item   QGLFramebufferObject(const QSize & size, GLenum target)
 
-=item   QGLFramebufferObject(,  = GL_TEXTURE_2D)
+=item   QGLFramebufferObject(const QSize & size, GLenum target = GL_TEXTURE_2D)
 
-=item   QGLFramebufferObject(, )
+=item   QGLFramebufferObject(const QSize & size, const QGLFramebufferObjectFormat & format)
 
-=item   QGLFramebufferObject(, , )
+=item   QGLFramebufferObject(int width, int height, GLenum target)
 
-=item   QGLFramebufferObject(, ,  = GL_TEXTURE_2D)
+=item   QGLFramebufferObject(int width, int height, GLenum target = GL_TEXTURE_2D)
 
-=item   QGLFramebufferObject(, , )
+=item   QGLFramebufferObject(int width, int height, const QGLFramebufferObjectFormat & format)
 
-=item   QGLFramebufferObject(, , , )
+=item   QGLFramebufferObject(const QSize & size, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format)
 
-=item   QGLFramebufferObject(, , ,  = GL_RGBA8)
+=item   QGLFramebufferObject(const QSize & size, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format = GL_RGBA8)
 
-=item   QGLFramebufferObject(, ,  = GL_TEXTURE_2D,  = GL_RGBA8)
+=item   QGLFramebufferObject(const QSize & size, QGLFramebufferObject::Attachment attachment, GLenum target = GL_TEXTURE_2D, GLenum internal_format = GL_RGBA8)
 
-=item   QGLFramebufferObject(, , , , )
+=item   QGLFramebufferObject(int width, int height, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format)
 
-=item   QGLFramebufferObject(, , , ,  = GL_RGBA8)
+=item   QGLFramebufferObject(int width, int height, QGLFramebufferObject::Attachment attachment, GLenum target, GLenum internal_format = GL_RGBA8)
 
-=item   QGLFramebufferObject(, , ,  = GL_TEXTURE_2D,  = GL_RGBA8)
+=item   QGLFramebufferObject(int width, int height, QGLFramebufferObject::Attachment attachment, GLenum target = GL_TEXTURE_2D, GLenum internal_format = GL_RGBA8)
 
 =item   ~QGLFramebufferObject()
 
@@ -56,19 +55,19 @@ Qt::OpenGL::QGLFramebufferObject
 
 =item  static bool bindDefault()
 
-=item  static void blitFramebuffer(, , , , , )
+=item  static void blitFramebuffer(QGLFramebufferObject * target, const QRect & targetRect, QGLFramebufferObject * source, const QRect & sourceRect, GLbitfield buffers, GLenum filter)
 
-=item  static void blitFramebuffer(, , , , ,  = GL_NEAREST)
+=item  static void blitFramebuffer(QGLFramebufferObject * target, const QRect & targetRect, QGLFramebufferObject * source, const QRect & sourceRect, GLbitfield buffers, GLenum filter = GL_NEAREST)
 
-=item  static void blitFramebuffer(, , , ,  = GL_COLOR_BUFFER_BIT,  = GL_NEAREST)
+=item  static void blitFramebuffer(QGLFramebufferObject * target, const QRect & targetRect, QGLFramebufferObject * source, const QRect & sourceRect, GLbitfield buffers = GL_COLOR_BUFFER_BIT, GLenum filter = GL_NEAREST)
 
-=item  void drawTexture(, , )
+=item  void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
 
-=item  void drawTexture(, ,  = GL_TEXTURE_2D)
+=item  void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 
-=item  void drawTexture(, , )
+=item  void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
 
-=item  void drawTexture(, ,  = GL_TEXTURE_2D)
+=item  void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 
 =item  QGLFramebufferObjectFormat format()
 

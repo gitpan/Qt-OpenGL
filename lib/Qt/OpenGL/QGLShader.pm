@@ -7,8 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
-our $ISA     = qw/Qt::Core::QObject/;
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -24,27 +23,27 @@ Qt::OpenGL::QGLShader
 
 =over
 
-=item   QGLShader(, )
+=item   QGLShader(QFlags<QGLShader::ShaderTypeBit> type, QObject * parent)
 
-=item   QGLShader(,  = 0)
+=item   QGLShader(QFlags<QGLShader::ShaderTypeBit> type, QObject * parent = 0)
 
-=item   QGLShader(, , )
+=item   QGLShader(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context, QObject * parent)
 
-=item   QGLShader(, ,  = 0)
+=item   QGLShader(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context, QObject * parent = 0)
 
 =item   ~QGLShader()
 
-=item  bool compileSourceCode()
+=item  bool compileSourceCode(const char * source)
 
-=item  bool compileSourceCode()
+=item  bool compileSourceCode(const QByteArray & source)
 
-=item  bool compileSourceCode()
+=item  bool compileSourceCode(const QString & source)
 
-=item  bool compileSourceFile()
+=item  bool compileSourceFile(const QString & fileName)
 
-=item  static bool hasOpenGLShaders(, )
+=item  static bool hasOpenGLShaders(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context)
 
-=item  static bool hasOpenGLShaders(,  = 0)
+=item  static bool hasOpenGLShaders(QFlags<QGLShader::ShaderTypeBit> type, const QGLContext * context = 0)
 
 =item  bool isCompiled()
 

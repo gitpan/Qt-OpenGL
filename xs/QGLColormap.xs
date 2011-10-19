@@ -19,7 +19,7 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QGLColormap()
-##  QGLColormap()
+##  QGLColormap(const QGLColormap & arg0)
   void
 QGLColormap::new(...)
 PREINIT:
@@ -74,7 +74,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## QColor entryColor()
+## QColor entryColor(int idx)
 void
 QGLColormap::entryColor(...)
 PREINIT:
@@ -88,7 +88,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QRgb entryRgb()
+## QRgb entryRgb(int idx)
 void
 QGLColormap::entryRgb(...)
 PREINIT:
@@ -102,13 +102,13 @@ PPCODE:
     XSRETURN(1);
     }
 
-## int find()
+## int find(QRgb color)
 void
 QGLColormap::find(...)
 PREINIT:
 QRgb arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (QRgb)SvUV(ST(1));
     int ret = THIS->find(arg00);
     ST(0) = sv_newmortal();
@@ -116,13 +116,13 @@ PPCODE:
     XSRETURN(1);
     }
 
-## int findNearest()
+## int findNearest(QRgb color)
 void
 QGLColormap::findNearest(...)
 PREINIT:
 QRgb arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (QRgb)SvUV(ST(1));
     int ret = THIS->findNearest(arg00);
     ST(0) = sv_newmortal();
@@ -143,7 +143,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QGLColormap & operator=()
+## QGLColormap & operator=(const QGLColormap & arg0)
 void
 QGLColormap::operator_assign(...)
 PREINIT:
@@ -157,8 +157,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void setEntries(, , )
-## void setEntries(, ,  = 0)
+## void setEntries(int count, const QRgb * colors, int base)
+## void setEntries(int count, const QRgb * colors, int base = 0)
 void
 QGLColormap::setEntries(...)
 PREINIT:
@@ -172,7 +172,7 @@ PPCODE:
     switch(items) {
       case 3:
       {
-        if (SvIOK(ST(1)) && SvUOK(ST(2))) {
+        if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg10 = (int)SvIV(ST(1));
       {
         QRgb tmp = static_cast<QRgb>(SvUV(ST(2)));
@@ -187,7 +187,7 @@ PPCODE:
       }
       case 4:
       {
-        if (SvIOK(ST(1)) && SvUOK(ST(2)) && SvIOK(ST(3))) {
+        if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2))) && SvIOK(ST(3))) {
       arg00 = (int)SvIV(ST(1));
       {
         QRgb tmp = static_cast<QRgb>(SvUV(ST(2)));
@@ -206,8 +206,8 @@ PPCODE:
         break;
     }
 
-## void setEntry(, )
-## void setEntry(, )
+## void setEntry(int idx, QRgb color)
+## void setEntry(int idx, const QColor & color)
 void
 QGLColormap::setEntry(...)
 PREINIT:
@@ -219,7 +219,7 @@ PPCODE:
     switch(items) {
       case 3:
       {
-        if (SvIOK(ST(1)) && SvUOK(ST(2))) {
+        if (SvIOK(ST(1)) && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       arg00 = (int)SvIV(ST(1));
       arg01 = (QRgb)SvUV(ST(2));
     (void)THIS->setEntry(arg00, arg01);

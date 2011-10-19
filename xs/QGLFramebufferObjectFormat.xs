@@ -19,7 +19,7 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QGLFramebufferObjectFormat()
-##  QGLFramebufferObjectFormat()
+##  QGLFramebufferObjectFormat(const QGLFramebufferObjectFormat & other)
   void
 QGLFramebufferObjectFormat::new(...)
 PREINIT:
@@ -89,7 +89,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator!=()
+## bool operator!=(const QGLFramebufferObjectFormat & other)
 void
 QGLFramebufferObjectFormat::operator_not_equal(...)
 PREINIT:
@@ -103,7 +103,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QGLFramebufferObjectFormat & operator=()
+## QGLFramebufferObjectFormat & operator=(const QGLFramebufferObjectFormat & other)
 void
 QGLFramebufferObjectFormat::operator_assign(...)
 PREINIT:
@@ -117,7 +117,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator==()
+## bool operator==(const QGLFramebufferObjectFormat & other)
 void
 QGLFramebufferObjectFormat::operator_equal_to(...)
 PREINIT:
@@ -144,7 +144,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void setAttachment()
+## void setAttachment(QGLFramebufferObject::Attachment attachment)
 void
 QGLFramebufferObjectFormat::setAttachment(...)
 PREINIT:
@@ -156,19 +156,19 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setInternalTextureFormat()
+## void setInternalTextureFormat(GLenum internalTextureFormat)
 void
 QGLFramebufferObjectFormat::setInternalTextureFormat(...)
 PREINIT:
 GLenum arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (GLenum)SvUV(ST(1));
     (void)THIS->setInternalTextureFormat(arg00);
     XSRETURN(0);
     }
 
-## void setSamples()
+## void setSamples(int samples)
 void
 QGLFramebufferObjectFormat::setSamples(...)
 PREINIT:
@@ -180,13 +180,13 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setTextureTarget()
+## void setTextureTarget(GLenum target)
 void
 QGLFramebufferObjectFormat::setTextureTarget(...)
 PREINIT:
 GLenum arg00;
 PPCODE:
-    if (SvUOK(ST(1))) {
+    if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (GLenum)SvUV(ST(1));
     (void)THIS->setTextureTarget(arg00);
     XSRETURN(0);

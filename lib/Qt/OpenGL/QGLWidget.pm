@@ -7,8 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
-our $ISA     = qw/Qt::Gui::QWidget/;
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -24,75 +23,75 @@ Qt::OpenGL::QGLWidget
 
 =over
 
-=item   QGLWidget(, , )
+=item   QGLWidget(QWidget * parent, const QGLWidget * shareWidget, QFlags<Qt::WindowType> f)
 
-=item   QGLWidget(, ,  = 0)
+=item   QGLWidget(QWidget * parent, const QGLWidget * shareWidget, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget(,  = 0,  = 0)
+=item   QGLWidget(QWidget * parent, const QGLWidget * shareWidget = 0, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget( = 0,  = 0,  = 0)
+=item   QGLWidget(QWidget * parent = 0, const QGLWidget * shareWidget = 0, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget(, , , )
+=item   QGLWidget(QGLContext * context, QWidget * parent, const QGLWidget * shareWidget, QFlags<Qt::WindowType> f)
 
-=item   QGLWidget(, , ,  = 0)
+=item   QGLWidget(QGLContext * context, QWidget * parent, const QGLWidget * shareWidget, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget(, ,  = 0,  = 0)
+=item   QGLWidget(QGLContext * context, QWidget * parent, const QGLWidget * shareWidget = 0, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget(,  = 0,  = 0,  = 0)
+=item   QGLWidget(QGLContext * context, QWidget * parent = 0, const QGLWidget * shareWidget = 0, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget(, , , )
+=item   QGLWidget(const QGLFormat & format, QWidget * parent, const QGLWidget * shareWidget, QFlags<Qt::WindowType> f)
 
-=item   QGLWidget(, , ,  = 0)
+=item   QGLWidget(const QGLFormat & format, QWidget * parent, const QGLWidget * shareWidget, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget(, ,  = 0,  = 0)
+=item   QGLWidget(const QGLFormat & format, QWidget * parent, const QGLWidget * shareWidget = 0, QFlags<Qt::WindowType> f = 0)
 
-=item   QGLWidget(,  = 0,  = 0,  = 0)
+=item   QGLWidget(const QGLFormat & format, QWidget * parent = 0, const QGLWidget * shareWidget = 0, QFlags<Qt::WindowType> f = 0)
 
 =item   ~QGLWidget()
 
-=item  GLuint bindTexture()
+=item  GLuint bindTexture(const QString & fileName)
 
-=item  GLuint bindTexture(, , )
+=item  GLuint bindTexture(const QImage & image, GLenum target, GLint format)
 
-=item  GLuint bindTexture(, ,  = GL_RGBA)
+=item  GLuint bindTexture(const QImage & image, GLenum target, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
+=item  GLuint bindTexture(const QImage & image, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(, , )
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format)
 
-=item  GLuint bindTexture(, ,  = GL_RGBA)
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(,  = GL_TEXTURE_2D,  = GL_RGBA)
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target = GL_TEXTURE_2D, GLint format = GL_RGBA)
 
-=item  GLuint bindTexture(, , , )
+=item  GLuint bindTexture(const QImage & image, GLenum target, GLint format, QFlags<QGLContext::BindOption> options)
 
-=item  GLuint bindTexture(, , , )
+=item  GLuint bindTexture(const QPixmap & pixmap, GLenum target, GLint format, QFlags<QGLContext::BindOption> options)
 
 =item  const QGLColormap & colormap()
 
 =item  const QGLContext * context()
 
-=item  static QImage convertToGLFormat()
+=item  static QImage convertToGLFormat(const QImage & img)
 
-=item  void deleteTexture()
+=item  void deleteTexture(GLuint tx_id)
 
 =item  void doneCurrent()
 
 =item  bool doubleBuffer()
 
-=item  void drawTexture(, , )
+=item  void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget)
 
-=item  void drawTexture(, ,  = GL_TEXTURE_2D)
+=item  void drawTexture(const QRectF & target, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 
-=item  void drawTexture(, , )
+=item  void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget)
 
-=item  void drawTexture(, ,  = GL_TEXTURE_2D)
+=item  void drawTexture(const QPointF & point, GLuint textureId, GLenum textureTarget = GL_TEXTURE_2D)
 
 =item  QGLFormat format()
 
-=item  QImage grabFrameBuffer()
+=item  QImage grabFrameBuffer(bool withAlpha)
 
-=item  QImage grabFrameBuffer( = false)
+=item  QImage grabFrameBuffer(bool withAlpha = false)
 
 =item  bool isSharing()
 
@@ -106,41 +105,41 @@ Qt::OpenGL::QGLWidget
 
 =item  QPaintEngine * paintEngine()
 
-=item  void qglClearColor()
+=item  void qglClearColor(const QColor & c)
 
-=item  void qglColor()
+=item  void qglColor(const QColor & c)
 
-=item  QPixmap renderPixmap(, , )
+=item  QPixmap renderPixmap(int w, int h, bool useContext)
 
-=item  QPixmap renderPixmap(, ,  = false)
+=item  QPixmap renderPixmap(int w, int h, bool useContext = false)
 
-=item  QPixmap renderPixmap(,  = 0,  = false)
+=item  QPixmap renderPixmap(int w, int h = 0, bool useContext = false)
 
-=item  QPixmap renderPixmap( = 0,  = 0,  = false)
+=item  QPixmap renderPixmap(int w = 0, int h = 0, bool useContext = false)
 
-=item  void renderText(, , , , )
+=item  void renderText(int x, int y, const QString & str, const QFont & fnt, int listBase)
 
-=item  void renderText(, , , ,  = 2000)
+=item  void renderText(int x, int y, const QString & str, const QFont & fnt, int listBase = 2000)
 
-=item  void renderText(, , ,  = QFont(),  = 2000)
+=item  void renderText(int x, int y, const QString & str, const QFont & fnt = QFont(), int listBase = 2000)
 
-=item  void renderText(, , , , , )
+=item  void renderText(double x, double y, double z, const QString & str, const QFont & fnt, int listBase)
 
-=item  void renderText(, , , , ,  = 2000)
+=item  void renderText(double x, double y, double z, const QString & str, const QFont & fnt, int listBase = 2000)
 
-=item  void renderText(, , , ,  = QFont(),  = 2000)
+=item  void renderText(double x, double y, double z, const QString & str, const QFont & fnt = QFont(), int listBase = 2000)
 
-=item  void setColormap()
+=item  void setColormap(const QGLColormap & map)
 
-=item  void setContext(, , )
+=item  void setContext(QGLContext * context, const QGLContext * shareContext, bool deleteOldContext)
 
-=item  void setContext(, ,  = true)
+=item  void setContext(QGLContext * context, const QGLContext * shareContext, bool deleteOldContext = true)
 
-=item  void setContext(,  = 0,  = true)
+=item  void setContext(QGLContext * context, const QGLContext * shareContext = 0, bool deleteOldContext = true)
 
-=item  void setFormat()
+=item  void setFormat(const QGLFormat & format)
 
-=item  void setMouseTracking()
+=item  void setMouseTracking(bool enable)
 
 =item  void swapBuffers()
 

@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,7 +25,7 @@ Qt::OpenGL::QGLFramebufferObjectFormat
 
 =item   QGLFramebufferObjectFormat()
 
-=item   QGLFramebufferObjectFormat()
+=item   QGLFramebufferObjectFormat(const QGLFramebufferObjectFormat & other)
 
 =item   ~QGLFramebufferObjectFormat()
 
@@ -33,21 +33,21 @@ Qt::OpenGL::QGLFramebufferObjectFormat
 
 =item  GLenum internalTextureFormat()
 
-=item  bool operator!=()
+=item  bool operator!=(const QGLFramebufferObjectFormat & other)
 
-=item  QGLFramebufferObjectFormat & operator=()
+=item  QGLFramebufferObjectFormat & operator=(const QGLFramebufferObjectFormat & other)
 
-=item  bool operator==()
+=item  bool operator==(const QGLFramebufferObjectFormat & other)
 
 =item  int samples()
 
-=item  void setAttachment()
+=item  void setAttachment(QGLFramebufferObject::Attachment attachment)
 
-=item  void setInternalTextureFormat()
+=item  void setInternalTextureFormat(GLenum internalTextureFormat)
 
-=item  void setSamples()
+=item  void setSamples(int samples)
 
-=item  void setTextureTarget()
+=item  void setTextureTarget(GLenum target)
 
 =item  GLenum textureTarget()
 

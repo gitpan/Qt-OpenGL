@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,11 +25,11 @@ Qt::OpenGL::QGLFormat
 
 =item   QGLFormat()
 
-=item   QGLFormat()
+=item   QGLFormat(const QGLFormat & other)
 
-=item   QGLFormat(, )
+=item   QGLFormat(QFlags<QGL::FormatOption> options, int plane)
 
-=item   QGLFormat(,  = 0)
+=item   QGLFormat(QFlags<QGL::FormatOption> options, int plane = 0)
 
 =item   ~QGLFormat()
 
@@ -69,7 +69,7 @@ Qt::OpenGL::QGLFormat
 
 =item  static QFlags<QGLFormat::OpenGLVersionFlag> openGLVersionFlags()
 
-=item  QGLFormat & operator=()
+=item  QGLFormat & operator=(const QGLFormat & other)
 
 =item  int plane()
 
@@ -83,55 +83,55 @@ Qt::OpenGL::QGLFormat
 
 =item  int samples()
 
-=item  void setAccum()
+=item  void setAccum(bool enable)
 
-=item  void setAccumBufferSize()
+=item  void setAccumBufferSize(int size)
 
-=item  void setAlpha()
+=item  void setAlpha(bool enable)
 
-=item  void setAlphaBufferSize()
+=item  void setAlphaBufferSize(int size)
 
-=item  void setBlueBufferSize()
+=item  void setBlueBufferSize(int size)
 
-=item  static void setDefaultFormat()
+=item  static void setDefaultFormat(const QGLFormat & f)
 
-=item  static void setDefaultOverlayFormat()
+=item  static void setDefaultOverlayFormat(const QGLFormat & f)
 
-=item  void setDepth()
+=item  void setDepth(bool enable)
 
-=item  void setDepthBufferSize()
+=item  void setDepthBufferSize(int size)
 
-=item  void setDirectRendering()
+=item  void setDirectRendering(bool enable)
 
-=item  void setDoubleBuffer()
+=item  void setDoubleBuffer(bool enable)
 
-=item  void setGreenBufferSize()
+=item  void setGreenBufferSize(int size)
 
-=item  void setOption()
+=item  void setOption(QFlags<QGL::FormatOption> opt)
 
-=item  void setOverlay()
+=item  void setOverlay(bool enable)
 
-=item  void setPlane()
+=item  void setPlane(int plane)
 
-=item  void setProfile()
+=item  void setProfile(QGLFormat::OpenGLContextProfile profile)
 
-=item  void setRedBufferSize()
+=item  void setRedBufferSize(int size)
 
-=item  void setRgba()
+=item  void setRgba(bool enable)
 
-=item  void setSampleBuffers()
+=item  void setSampleBuffers(bool enable)
 
-=item  void setSamples()
+=item  void setSamples(int numSamples)
 
-=item  void setStencil()
+=item  void setStencil(bool enable)
 
-=item  void setStencilBufferSize()
+=item  void setStencilBufferSize(int size)
 
-=item  void setStereo()
+=item  void setStereo(bool enable)
 
-=item  void setSwapInterval()
+=item  void setSwapInterval(int interval)
 
-=item  void setVersion(, )
+=item  void setVersion(int major, int minor)
 
 =item  bool stencil()
 
@@ -141,7 +141,7 @@ Qt::OpenGL::QGLFormat
 
 =item  int swapInterval()
 
-=item  bool testOption()
+=item  bool testOption(QFlags<QGL::FormatOption> opt)
 
 
 =back
