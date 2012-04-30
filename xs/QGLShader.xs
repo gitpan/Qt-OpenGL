@@ -1,7 +1,7 @@
 ################################################################
 # THE FOLLOWING CODE IS AUTOMATED, ANY MODIFICATION WILL BE LOST!
 #
-# Copyright (C) 2007 - 2011 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
+# Copyright (C) 2007 - 2012 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
 #
 # This library is free software; you can redistribute it and/or 
 # modify it under the same terms as Perl itself.
@@ -41,7 +41,7 @@ PPCODE:
       case 2:
       {
         if (SvIOK(ST(1))) {
-      arg10 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg10 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
     ret = new QGLShader(arg10, arg11);
     ST(0) = sv_newmortal();
     sv_setref_pv(ST(0), "Qt::OpenGL::QGLShader", (void *)ret);
@@ -54,7 +54,7 @@ PPCODE:
       case 3:
       {
         if (SvIOK(ST(1)) && (sv_derived_from(ST(2), "Qt::Core::QObject") || ST(2) == &PL_sv_undef)) {
-      arg00 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg00 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       if (sv_derived_from(ST(2), "Qt::Core::QObject")) {
         arg01 = reinterpret_cast<QObject *>(SvIV((SV*)SvRV(ST(2))));
     }
@@ -69,7 +69,7 @@ PPCODE:
     XSRETURN(1);
     }
         else if (SvIOK(ST(1)) && (sv_derived_from(ST(2), "Qt::OpenGL::QGLContext") || ST(2) == &PL_sv_undef)) {
-      arg30 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg30 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       if (sv_derived_from(ST(2), "Qt::OpenGL::QGLContext")) {
         arg31 = reinterpret_cast<QGLContext *>(SvIV((SV*)SvRV(ST(2))));
     }
@@ -90,7 +90,7 @@ PPCODE:
       case 4:
       {
         if (SvIOK(ST(1)) && (sv_derived_from(ST(2), "Qt::OpenGL::QGLContext") || ST(2) == &PL_sv_undef) && (sv_derived_from(ST(3), "Qt::Core::QObject") || ST(3) == &PL_sv_undef)) {
-      arg20 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg20 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       if (sv_derived_from(ST(2), "Qt::OpenGL::QGLContext")) {
         arg21 = reinterpret_cast<QGLContext *>(SvIV((SV*)SvRV(ST(2))));
     }
@@ -199,7 +199,7 @@ PPCODE:
       case 2:
       {
         if (SvIOK(ST(1))) {
-      arg10 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg10 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
     bool ret = THIS->hasOpenGLShaders(arg10, arg11);
     ST(0) = sv_newmortal();
     ST(0) = boolSV(ret);
@@ -212,7 +212,7 @@ PPCODE:
       case 3:
       {
         if (SvIOK(ST(1)) && (sv_derived_from(ST(2), "Qt::OpenGL::QGLContext") || ST(2) == &PL_sv_undef)) {
-      arg00 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg00 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       if (sv_derived_from(ST(2), "Qt::OpenGL::QGLContext")) {
         arg01 = reinterpret_cast<QGLContext *>(SvIV((SV*)SvRV(ST(2))));
     }
@@ -283,7 +283,7 @@ PPCODE:
       
     QFlags<QGLShader::ShaderTypeBit> ret = THIS->shaderType();
     ST(0) = sv_newmortal();
-    sv_setiv(ST(0), (IV)ret);
+    sv_setiv(ST(0), (int)ret);
     XSRETURN(1);
     }
 

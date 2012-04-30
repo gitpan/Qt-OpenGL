@@ -1,7 +1,7 @@
 ################################################################
 # THE FOLLOWING CODE IS AUTOMATED, ANY MODIFICATION WILL BE LOST!
 #
-# Copyright (C) 2007 - 2011 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
+# Copyright (C) 2007 - 2012 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
 #
 # This library is free software; you can redistribute it and/or 
 # modify it under the same terms as Perl itself.
@@ -157,7 +157,7 @@ PPCODE:
       case 3:
       {
         if (SvIOK(ST(1)) && SvPOK(ST(2))) {
-      arg00 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg00 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       arg01 = (const char *)SvPV_nolen(ST(2));
     bool ret = THIS->addShaderFromSourceCode(arg00, arg01);
     ST(0) = sv_newmortal();
@@ -165,7 +165,7 @@ PPCODE:
     XSRETURN(1);
     }
         else if (SvIOK(ST(1)) && sv_isa(ST(2), "Qt::Core::QByteArray")) {
-      arg10 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg10 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       arg11 = reinterpret_cast<QByteArray *>(SvIV((SV*)SvRV(ST(2))));
     bool ret = THIS->addShaderFromSourceCode(arg10, *arg11);
     ST(0) = sv_newmortal();
@@ -173,7 +173,7 @@ PPCODE:
     XSRETURN(1);
     }
         else if (SvIOK(ST(1)) && sv_isa(ST(2), "Qt::Core::QString")) {
-      arg20 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg20 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       arg21 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(2))));
     bool ret = THIS->addShaderFromSourceCode(arg20, *arg21);
     ST(0) = sv_newmortal();
@@ -197,7 +197,7 @@ QFlags<QGLShader::ShaderTypeBit> arg00;
 QString * arg01;
 PPCODE:
     if (SvIOK(ST(1)) && sv_isa(ST(2), "Qt::Core::QString")) {
-      arg00 = QFlags<QGLShader::ShaderTypeBit>((int)SvIV(ST(1)));
+      arg00 = QFlags<QGLShader::ShaderTypeBit>((QGLShader::ShaderTypeBit)SvIV(ST(1)));
       arg01 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(2))));
     bool ret = THIS->addShaderFromSourceFile(arg00, *arg01);
     ST(0) = sv_newmortal();
@@ -1920,6 +1920,19 @@ PPCODE:
       default:
         Perl_croak(aTHX_ "wrong number/type of arguments passed in");
         break;
+    }
+
+## QList<QGLShader *> shaders()
+void
+QGLShaderProgram::shaders(...)
+PREINIT:
+PPCODE:
+    if (1) {
+      
+    QList<QGLShader *> ret = THIS->shaders();
+    ST(0) = sv_newmortal();
+    sv_setref_pv(ST(0), "Qt::OpenGL::Template::T000", (void *)new QList<QGLShader *>(ret));
+    XSRETURN(1);
     }
 
 ## int uniformLocation(const char * name)

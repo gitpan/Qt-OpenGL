@@ -21,6 +21,7 @@
 typedef GLfloat  T_ARRAY_VALUE[4][4];
 typedef bool (*T_FPOINTER_QINTERNALCALLBACK_QNAMESPACE)(void **);
 typedef void (*T_FPOINTER_QTMSGHANDLER_QGLOBAL)(QtMsgType,const char *);
+typedef QList<QGLShader *> T000;
 
 MODULE = Qt		PACKAGE = Qt
 PROTOTYPES: DISABLE
@@ -35,3 +36,4 @@ INCLUDE:		xs/QGLPixelBuffer.xs
 INCLUDE:		xs/QGLShader.xs
 INCLUDE:		xs/QGLShaderProgram.xs
 INCLUDE:		xs/QGLWidget.xs
+INCLUDE:		xs/T000.xs

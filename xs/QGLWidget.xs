@@ -1,7 +1,7 @@
 ################################################################
 # THE FOLLOWING CODE IS AUTOMATED, ANY MODIFICATION WILL BE LOST!
 #
-# Copyright (C) 2007 - 2011 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
+# Copyright (C) 2007 - 2012 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
 #
 # This library is free software; you can redistribute it and/or 
 # modify it under the same terms as Perl itself.
@@ -216,7 +216,7 @@ PPCODE:
     }
     else
         Perl_croak(aTHX_ "arg01 is not of type Qt::OpenGL::QGLWidget");
-      arg02 = QFlags<Qt::WindowType>((int)SvIV(ST(3)));
+      arg02 = QFlags<Qt::WindowType>((Qt::WindowType)SvIV(ST(3)));
     ret = new QGLWidget(arg00, arg01, arg02);
     ST(0) = sv_newmortal();
     sv_setref_pv(ST(0), "Qt::OpenGL::QGLWidget", (void *)ret);
@@ -306,7 +306,7 @@ PPCODE:
     }
     else
         Perl_croak(aTHX_ "arg42 is not of type Qt::OpenGL::QGLWidget");
-      arg43 = QFlags<Qt::WindowType>((int)SvIV(ST(4)));
+      arg43 = QFlags<Qt::WindowType>((Qt::WindowType)SvIV(ST(4)));
     ret = new QGLWidget(arg40, arg41, arg42, arg43);
     ST(0) = sv_newmortal();
     sv_setref_pv(ST(0), "Qt::OpenGL::QGLWidget", (void *)ret);
@@ -330,7 +330,7 @@ PPCODE:
     }
     else
         Perl_croak(aTHX_ "arg82 is not of type Qt::OpenGL::QGLWidget");
-      arg83 = QFlags<Qt::WindowType>((int)SvIV(ST(4)));
+      arg83 = QFlags<Qt::WindowType>((Qt::WindowType)SvIV(ST(4)));
     ret = new QGLWidget(*arg80, arg81, arg82, arg83);
     ST(0) = sv_newmortal();
     sv_setref_pv(ST(0), "Qt::OpenGL::QGLWidget", (void *)ret);
@@ -472,7 +472,7 @@ PPCODE:
       arg70 = reinterpret_cast<QImage *>(SvIV((SV*)SvRV(ST(1))));
       arg71 = (GLenum)SvUV(ST(2));
       arg72 = (GLint)SvIV(ST(3));
-      arg73 = QFlags<QGLContext::BindOption>((int)SvIV(ST(4)));
+      arg73 = QFlags<QGLContext::BindOption>((QGLContext::BindOption)SvIV(ST(4)));
     GLuint ret = THIS->bindTexture(*arg70, arg71, arg72, arg73);
     ST(0) = sv_newmortal();
     sv_setuv(ST(0), (UV)ret);
@@ -482,7 +482,7 @@ PPCODE:
       arg80 = reinterpret_cast<QPixmap *>(SvIV((SV*)SvRV(ST(1))));
       arg81 = (GLenum)SvUV(ST(2));
       arg82 = (GLint)SvIV(ST(3));
-      arg83 = QFlags<QGLContext::BindOption>((int)SvIV(ST(4)));
+      arg83 = QFlags<QGLContext::BindOption>((QGLContext::BindOption)SvIV(ST(4)));
     GLuint ret = THIS->bindTexture(*arg80, arg81, arg82, arg83);
     ST(0) = sv_newmortal();
     sv_setuv(ST(0), (UV)ret);

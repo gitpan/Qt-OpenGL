@@ -16,6 +16,7 @@ QGLBuffer *                             		T_PTROBJ_0012
 QGLShader *                             		T_PTROBJ_0013
 QGLContext *                            		T_PTROBJ_0014
 QBool *                                 		T_PTROBJ_0015
+T000 *                                  		T_PTROBJ_0016
 
 ################################################################
 INPUT
@@ -115,6 +116,12 @@ T_PTROBJ_0015
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Core::QBool\");
 
+T_PTROBJ_0016
+    if (sv_derived_from($arg, \"Qt::OpenGL::Template::T000\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::OpenGL::Template::T000\");
+
 
 ################################################################
 OUTPUT
@@ -165,4 +172,7 @@ T_PTROBJ_0014
 
 T_PTROBJ_0015
     sv_setref_pv($arg, \"Qt::Core::QBool\", (void *)$var);
+
+T_PTROBJ_0016
+    sv_setref_pv($arg, \"Qt::OpenGL::Template::T000\", (void *)$var);
 

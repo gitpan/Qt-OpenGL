@@ -5,11 +5,12 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 12;
+use Test::More tests => 13;
 BEGIN {
 use_ok('Qt::OpenGL');
 use_ok('Qt::OpenGL');
 use_ok('Qt::OpenGL::QGLFramebufferObjectFormat');
+use_ok('Qt::OpenGL::Template');
 use_ok('Qt::OpenGL::QGLShaderProgram');
 use_ok('Qt::OpenGL::QGLBuffer');
 use_ok('Qt::OpenGL::QGLContext');
